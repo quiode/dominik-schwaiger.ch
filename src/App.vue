@@ -1,5 +1,14 @@
 <script setup lang="ts"></script>
 
-<template></template>
+<template>
+  <h1>Test</h1>
+</template>
 
-<style></style>
+<style lang="scss">
+  h1 {
+    color: red;
+    font-family: monospace;
+    text-align: center;
+    font-size: 10vh;
+  }
+</style>
