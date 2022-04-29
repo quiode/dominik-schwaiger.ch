@@ -2,9 +2,12 @@
   "name": "dominik-schwaiger.ch",
   "version": "0.0.0",
   "repository": {
-    "type": "git",
-    "url": ""
+    "url": "https://github.com/quiode/dominik-schwaiger.ch",
+    "type": "git"
   },
+  "private": true,
+  "homepage": "https://github.com/quiode/dominik-schwaiger.ch",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
