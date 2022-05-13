@@ -1,5 +1,10 @@
+@import '~/assets/colors.scss';
+
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: $background-color;
+    color: $primary-color;
+    overflow: hidden;
 }

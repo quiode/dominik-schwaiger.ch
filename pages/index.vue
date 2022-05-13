@@ -1,7 +1,11 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+  definePageMeta({
+    alias: '/home',
+  });
+</script>
 
 <template>
-  <div></div>
+  <div>hi :D</div>
 </template>
 
 <style scoped>

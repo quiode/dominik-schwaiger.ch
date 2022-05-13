@@ -1,4 +1,55 @@
-$background-color: #143F6B;
-$primary-color: #F55353;
-$secondary-color: #FEB139;
-$tertiary-color: #F6F54D;
+:root {
+    /* CSS HEX */
+    --eerie-black: #151515ff;
+    --tiffany-blue: #00b9aeff;
+    --maroon-x-11: #b8336aff;
+    --tumbleweed: #d8a47fff;
+    --blue-bell: #8d91c7ff;
+
+    /* CSS HSL */
+    --eerie-black: hsla(0, 0%, 8%, 1);
+    --tiffany-blue: hsla(176, 100%, 36%, 1);
+    --maroon-x-11: hsla(335, 57%, 46%, 1);
+    --tumbleweed: hsla(25, 53%, 67%, 1);
+    --blue-bell: hsla(236, 34%, 67%, 1);
+}
+
+/* SCSS HEX */
+$eerie-black: #151515ff;
+$tiffany-blue: #00b9aeff;
+$maroon-x-11: #b8336aff;
+$tumbleweed: #d8a47fff;
+$blue-bell: #8d91c7ff;
+
+/* SCSS HSL */
+$eerie-black: hsla(0, 0%, 8%, 1);
+$tiffany-blue: hsla(176, 100%, 36%, 1);
+$maroon-x-11: hsla(335, 57%, 46%, 1);
+$tumbleweed: hsla(25, 53%, 67%, 1);
+$blue-bell: hsla(236, 34%, 67%, 1);
+
+/* SCSS RGB */
+$eerie-black: rgba(21, 21, 21, 1);
+$tiffany-blue: rgba(0, 185, 174, 1);
+$maroon-x-11: rgba(184, 51, 106, 1);
+$tumbleweed: rgba(216, 164, 127, 1);
+$blue-bell: rgba(141, 145, 199, 1);
+
+/* SCSS Gradient */
+$gradient-top: linear-gradient(0deg, #151515ff, #00b9aeff, #b8336aff, #d8a47fff, #8d91c7ff);
+$gradient-right: linear-gradient(90deg, #151515ff, #00b9aeff, #b8336aff, #d8a47fff, #8d91c7ff);
+$gradient-bottom: linear-gradient(180deg, #151515ff, #00b9aeff, #b8336aff, #d8a47fff, #8d91c7ff);
+$gradient-left: linear-gradient(270deg, #151515ff, #00b9aeff, #b8336aff, #d8a47fff, #8d91c7ff);
+$gradient-top-right: linear-gradient(45deg, #151515ff, #00b9aeff, #b8336aff, #d8a47fff, #8d91c7ff);
+$gradient-bottom-right: linear-gradient(135deg, #151515ff, #00b9aeff, #b8336aff, #d8a47fff, #8d91c7ff);
+$gradient-top-left: linear-gradient(225deg, #151515ff, #00b9aeff, #b8336aff, #d8a47fff, #8d91c7ff);
+$gradient-bottom-left: linear-gradient(315deg, #151515ff, #00b9aeff, #b8336aff, #d8a47fff, #8d91c7ff);
+$gradient-radial: radial-gradient(#151515ff, #00b9aeff, #b8336aff, #d8a47fff, #8d91c7ff);
+
+// define main colors
+
+$background-color: $eerie-black;
+$primary-color: $tiffany-blue;
+$secondary-color: $maroon-x-11;
+$tertiary-color: $tumbleweed;
+$quaternary-color: $blue-bell;
