@@ -12,6 +12,6 @@ LABEL email="mail@dominik-schwaiger.ch"
 LABEL homepage="dominik-schwaiger.ch"
 LABEL description="My personal website"
 LABEL ch.dominik-schwaiger.image.authors="mail@dominik-schwaiger.ch"
-EXPOSE 3000
 
 CMD node .output/server/index.mjs
+EXPOSE 3000
