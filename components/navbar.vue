@@ -47,10 +47,6 @@
     width: 100%;
     height: 5%;
 
-    // hr {
-    //   margin: 8px 1%;
-    // }
-
     #items {
       // flex
       display: flex;
