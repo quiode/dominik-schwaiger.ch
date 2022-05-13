@@ -1,5 +1,5 @@
 
-FROM node:lts
+FROM node:16
 ADD . /dominik-schwaiger.ch
 WORKDIR /dominik-schwaiger.ch
 RUN ls
@@ -7,7 +7,7 @@ RUN npm install
 RUN npm run build
 
 # Configuration
-LABEL version="0.0.2"
+LABEL version="0.2.1"
 LABEL author="Dominik Schwaiger"
 LABEL email="mail@dominik-schwaiger.ch"
 LABEL homepage="dominik-schwaiger.ch"

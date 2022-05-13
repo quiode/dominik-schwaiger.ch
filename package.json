@@ -6,9 +6,10 @@
     "url": "dominik-schwaiger.ch"
   },
   "description": "My personal Website",
-  "version": "0.0.2",
+  "version": "0.2.1",
   "license": "MIT",
   "engines": {
+    "node": "^16.15.0"
   },
   "scripts": {
     "build": "nuxt build",
@@ -17,8 +18,8 @@
     "preview": "nuxt preview"
   },
   "devDependencies": {
-    "nuxt": "3.0.0-rc.3"
-  },
-  "dependencies": {
+    "nuxt": "3.0.0-rc.3",
+    "sass": "^1.51.0",
+    "sass-loader": "10"
   }
 }

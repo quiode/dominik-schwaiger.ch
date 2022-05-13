@@ -1,10 +1,17 @@
-<script lang="ts" setup>
-</script>
+<script lang="ts" setup></script>
 
 <template>
   <div>
-    Page: foo
+    <UnderConstruction />
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+  div {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+</style>
