@@ -1,7 +1,8 @@
 
 FROM node:lts
-RUN git clone https://github.com/quiode/dominik-schwaiger.ch --branch release --single-branch
+ADD . /dominik-schwaiger.ch
 WORKDIR /dominik-schwaiger.ch
+RUN ls
 RUN npm install
 RUN npm run build
 
