@@ -6,5 +6,8 @@ export default defineNuxtConfig({
         strict: true,
         typeCheck: true,
     },
+    meta: {
+        title: 'Dominik Schwaiger'
+    },
     css: ['~/assets/global.scss'],
 })

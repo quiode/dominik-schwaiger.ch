@@ -1,9 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <div>
-    <UnderConstruction />
-  </div>
+  <div></div>
 </template>
 
 <style scoped>
