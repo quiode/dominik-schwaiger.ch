@@ -91,7 +91,7 @@
       width: $width;
       aspect-ratio: 1/1;
       border-radius: 50%;
-      background: $gradient-light;
+      background: $gradient-light-top;
       z-index: calc($z-index - 1);
       animation: spin 4s linear infinite;
     }

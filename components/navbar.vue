@@ -1,4 +1,7 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+  const route = useRoute();
+  console.log(route.name);
+</script>
 
 <template>
   <nav>
@@ -6,31 +9,31 @@
 
     <div id="title"></div>
     <div id="items">
-      <div class="item">
+      <div class="item" :class="{ underline: route.name == 'index' }">
         <NuxtLink to="/home">Home</NuxtLink>
       </div>
 
       <div class="vr"></div>
 
-      <div class="item">
+      <div class="item" :class="{ underline: route.name == 'top5' }">
         <NuxtLink to="/top5">Projects</NuxtLink>
       </div>
 
       <div class="vr"></div>
 
-      <div class="item">
+      <div class="item" :class="{ underline: route.name == 'linktree' }">
         <NuxtLink to="/linktree">Linktree</NuxtLink>
       </div>
 
       <div class="vr"></div>
 
-      <div class="item">
+      <div class="item" :class="{ underline: route.name == 'documents' }">
         <NuxtLink to="/documents">Documents</NuxtLink>
       </div>
 
       <div class="vr"></div>
 
-      <div class="item">
+      <div class="item" :class="{ underline: route.name == 'impressum' }">
         <NuxtLink to="/impressum">Impressum</NuxtLink>
       </div>
     </div>
@@ -93,6 +96,10 @@
     .vr {
       width: 1px;
       background-color: $primary-color;
+    }
+
+    .underline {
+      text-decoration: solid underline !important;
     }
   }
 </style>
