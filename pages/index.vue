@@ -22,9 +22,10 @@
     display: flex;
     justify-content: center;
     position: relative;
-    width: 100vw;
-    height: 100vh;
+    // width: 100vw;
+    // height: 100vh;
     margin: 0;
+    margin-top: 1.5%;
     padding: 0;
   }
 
