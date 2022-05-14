@@ -7,30 +7,17 @@
 <template>
   <div id="root">
     <div id="container">
-      <img id="avatar" src="/avatar.jpg" />
-      <div id="text">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo assumenda, quis nam amet
-        illum unde consequatur magni quia, excepturi deleniti nulla voluptatum eius iste omnis
-        doloremque ea, quasi sunt placeat? Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        Perspiciatis magnam reiciendis doloribus, molestias expedita ab laboriosam. Dolor alias
-        dignissimos porro. Eaque ad enim unde pariatur temporibus nisi quia quos quasi! Lorem ipsum
-        dolor sit amet consectetur, adipisicing elit. Culpa nobis accusamus dolorum? Explicabo,
-        veritatis. Deserunt ipsa dicta nesciunt ratione, quisquam debitis hic. Tenetur ipsam maiores
-        reprehenderit voluptate, sunt praesentium nam. Lorem ipsum dolor, sit amet consectetur
-        adipisicing elit. Doloribus, tempora non sed et eos aperiam perspiciatis rerum corporis ex
-        repudiandae, enim possimus asperiores consequatur ut quo, blanditiis sapiente ullam quia.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi alias, ea error voluptate
-        doloribus, provident mollitia soluta, ad nam laborum dolorem. Corporis deleniti, delectus
-        accusamus vero unde quam doloribus ipsum. Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Eos aliquid facilis quisquam eveniet! Corporis officia quasi fugiat dignissimos alias
-        harum nisi amet, iste, voluptate voluptatem eligendi laboriosam esse necessitatibus
-        temporibus.
+      <div id="avatar">
+        <img src="/avatar.jpg" />
       </div>
+      <div id="text">Welcome to my website!</div>
     </div>
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+  @import '../assets/colors.scss';
+
   #root {
     display: flex;
     justify-content: center;
@@ -41,16 +28,6 @@
     padding: 0;
   }
 
-  @media screen and (max-width: 768px) {
-    #container {
-      grid-template-columns: auto !important;
-    }
-
-    #avatar {
-      width: 100% !important;
-    }
-  }
-
   #container {
     display: grid;
     grid-template-columns: auto auto;
@@ -58,14 +35,65 @@
     width: 80%;
     position: relative;
     top: 2.5%;
+
+    @media screen and (max-width: 768px) {
+      grid-template-columns: auto !important;
+    }
   }
 
   #text {
   }
 
   #avatar {
-    position: relative;
-    width: 250px;
-    object-fit: cover;
+    $border: 4px;
+    $z-index: 1;
+    $width: 250px;
+    width: $width;
+    aspect-ratio: 1/1;
+
+    @media screen and (max-width: 768px) {
+      $width-new: 100% !important;
+
+      width: $width-new;
+
+      &::before {
+        width: $width-new;
+      }
+    }
+
+    img {
+      position: relative;
+      object-fit: fill;
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      z-index: $z-index;
+      transition: transform 1s ease;
+
+      &:hover {
+        transform: rotate(360deg);
+      }
+    }
+
+    &::before {
+      @keyframes spin {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      // gradient border
+      content: '';
+      position: absolute;
+      top: -$border;
+      left: -$border;
+      padding: $border;
+      width: $width;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      background: $gradient-light;
+      z-index: calc($z-index - 1);
+      animation: spin 4s linear infinite;
+    }
   }
 </style>

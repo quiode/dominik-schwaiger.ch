@@ -80,6 +80,7 @@
 
         :active {
           color: $primary-color;
+          text-decoration: underline;
         }
 
         :link {
