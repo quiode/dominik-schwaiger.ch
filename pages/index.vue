@@ -7,8 +7,10 @@
 <template>
   <div id="root">
     <div id="container">
-      <div id="avatar">
-        <img src="/avatar.jpg" />
+      <div id="avatar-container">
+        <div id="avatar">
+          <img src="/avatar.jpg" />
+        </div>
       </div>
       <div id="text">Welcome to my website!</div>
     </div>
@@ -27,22 +29,37 @@
     margin: 0;
     margin-top: 1.5%;
     padding: 0;
+
+    @media screen and (max-width: 768px) {
+      text-align: center;
+    }
   }
 
   #container {
     display: grid;
     grid-template-columns: auto auto;
-    column-gap: 5%;
-    width: 80%;
+    gap: 5%;
+    width: 50%;
     position: relative;
     top: 2.5%;
 
     @media screen and (max-width: 768px) {
       grid-template-columns: auto !important;
+
+      top: 5% !important;
     }
   }
 
   #text {
+  }
+
+  #avatar-container {
+    @media screen and (max-width: 768px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
   }
 
   #avatar {
@@ -53,12 +70,13 @@
     aspect-ratio: 1/1;
 
     @media screen and (max-width: 768px) {
-      $width-new: 100% !important;
+      $width-new: 75%;
 
-      width: $width-new;
+      width: $width-new !important;
 
       &::before {
-        width: $width-new;
+        width: $width-new !important;
+        left: calc((100% - $width-new) / 2) - 1% !important;
       }
     }
 
