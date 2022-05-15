@@ -55,7 +55,7 @@
       font-size: 1em !important;
     }
 
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: 1400px) {
       font-size: 1.5em !important;
     }
 

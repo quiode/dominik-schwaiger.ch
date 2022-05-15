@@ -39,41 +39,43 @@ $page-transition-duration: 0.4s;
     transform: translateY(calc(-100% - 25vh));
 }
 
-// fill screen with content
-html {
-    &.fill-content {
-        height: 100%;
-        margin: 0;
-
-        transition: all;
-        transition-delay: $page-transition-duration;
-        transition-duration: 0s;
-
-        body {
+// fill screen with content (only now mobile)
+@media screen and (min-width: 768px) {
+    html {
+        &.fill-content {
             height: 100%;
             margin: 0;
 
+            transition: all;
+            transition-delay: $page-transition-duration;
+            transition-duration: 0s;
 
-            &>div {
-                display: flex;
-                flex-flow: column;
+            body {
                 height: 100%;
+                margin: 0;
+
 
                 &>div {
                     display: flex;
+                    flex-flow: column;
                     height: 100%;
-                    flex-direction: column;
-                    margin-top: 0.1%;
-
-                    &>nav {
-                        flex: 0 1 auto;
-                    }
 
                     &>div {
-                        flex: 1 1 auto;
-                        justify-content: center;
-                        align-items: center;
                         display: flex;
+                        height: 100%;
+                        flex-direction: column;
+                        margin-top: 0.1%;
+
+                        &>nav {
+                            flex: 0 1 auto;
+                        }
+
+                        &>div {
+                            flex: 1 1 auto;
+                            justify-content: center;
+                            align-items: center;
+                            display: flex;
+                        }
                     }
                 }
             }
