@@ -14,17 +14,17 @@
   @import url(https://fonts.googleapis.com/css?family=Gilda+Display);
 
   #container {
-    background: radial-gradient(#000, #111);
+    /* background: radial-gradient(#000, #111); */
     color: white;
     overflow: hidden;
-    height: 100vh;
-    width: 100vw;
+    /* height: 100vh;
+    width: 100vw; */
     user-select: none;
   }
 
   .static {
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
     position: relative;
     margin: 0;
     padding: 0;
