@@ -61,6 +61,26 @@
       margin: 5em;
       border-style: solid;
 
+      &:hover {
+        @keyframes hovering {
+          $rotation: 5deg;
+
+          0% {
+            transform: rotate($rotation);
+          }
+
+          50% {
+            transform: rotate(-$rotation);
+          }
+
+          100% {
+            transform: rotate($rotation);
+          }
+        }
+
+        animation: hovering 0.5s infinite;
+      }
+
       .icon {
         @keyframes gradient {
           0% {
