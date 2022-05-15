@@ -10,4 +10,5 @@ export default defineNuxtConfig({
         title: 'Dominik Schwaiger'
     },
     css: ['~/assets/colors.scss', '~/assets/global.scss', 'bootstrap-icons/font/bootstrap-icons.scss'],
+    buildModules: ['@intlify/nuxt3']
 })

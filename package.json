@@ -18,11 +18,19 @@
     "preview": "nuxt preview"
   },
   "devDependencies": {
-    "nuxt": "3.0.0-rc.3",
+    "@intlify/nuxt3": "^0.2.1",
+    "nuxt": "3.0.0-rc.1",
     "sass": "^1.51.0",
     "sass-loader": "10"
   },
   "dependencies": {
     "bootstrap-icons": "^1.8.2"
+  },
+  "overrides": {
+    "nuxi": "3.0.0-rc.1",
+    "nuxt": "3.0.0-rc.1",
+    "@nuxt/kit": "3.0.0-rc.1",
+    "@nuxt/schema": "3.0.0-rc.1",
+    "@nuxt/vite-builder": "3.0.0-rc.1"
   }
 }
