@@ -21,7 +21,12 @@
 <template>
   <div>
     <div id="container">
-      <div class="link" v-for="link in links">
+      <div
+        class="link"
+        :class="{ 'link-2': index % 2 == 0 }"
+        v-for="(link, index) in links"
+        :key="index"
+      >
         <a :href="link.url" target="_blank">{{ link.text }}</a>
       </div>
     </div>
@@ -71,6 +76,18 @@
 
     &:hover {
       background-position: left bottom;
+    }
+  }
+
+  .link-2 {
+    background-position: left bottom !important;
+    background-image: linear-gradient(
+      to right,
+      $background-color 50%,
+      $secondary-color 50%
+    ) !important;
+    &:hover {
+      background-position: right bottom !important;
     }
   }
 </style>
