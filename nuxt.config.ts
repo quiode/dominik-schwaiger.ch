@@ -9,5 +9,5 @@ export default defineNuxtConfig({
     meta: {
         title: 'Dominik Schwaiger'
     },
-    css: ['~/assets/colors.scss', '~/assets/global.scss'],
+    css: ['~/assets/colors.scss', '~/assets/global.scss', 'bootstrap-icons/font/bootstrap-icons.scss'],
 })

@@ -1,9 +1,13 @@
 lockfileVersion: 5.3
 
 specifiers:
+  bootstrap-icons: ^1.8.2
   nuxt: 3.0.0-rc.3
   sass: ^1.51.0
   sass-loader: '10'
+
+dependencies:
+  bootstrap-icons: 1.8.2
 
 devDependencies:
   nuxt: 3.0.0-rc.3_sass@1.51.0
@@ -1115,6 +1119,10 @@ packages:
   /boolbase/1.0.0:
     resolution: {integrity: sha1-aN/1++YMUes3cl6p4+0xDcwed24=}
     dev: true
+
+  /bootstrap-icons/1.8.2:
+    resolution: {integrity: sha512-jhNjdPzvUqKOr9o0XhCZAZDWVeuOg6mJHtSj2bhiqfamZVg6ekMYNgG7pRY4GItbjIwrTaht3dNbXGbX3eJNLQ==}
+    dev: false
 
   /brace-expansion/1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
