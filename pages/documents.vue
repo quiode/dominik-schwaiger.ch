@@ -1,4 +1,25 @@
 <script lang="ts" setup>
+  onMounted(() => {
+    // if fill-content is included in classList, wait a little bit
+    // to make sure it's done
+
+    let delay = 400;
+
+    if (document.documentElement.classList.contains('fill-content')) {
+      delay = 450;
+    }
+
+    setTimeout(() => {
+      document.documentElement.classList.add('fill-content');
+    }, delay);
+  });
+
+  onUnmounted(() => {
+    setTimeout(() => {
+      document.documentElement.classList.remove('fill-content');
+    }, 400);
+  });
+
   const documents: {
     name: string;
     icon: string;
@@ -15,18 +36,6 @@
       path: 'gpg.asc',
     },
   ];
-
-  onMounted(() => {
-    setTimeout(() => {
-      document.documentElement.classList.add('fill-content');
-    }, 400);
-  });
-
-  onUnmounted(() => {
-    setTimeout(() => {
-      document.documentElement.classList.remove('fill-content');
-    }, 400);
-  });
 </script>
 
 <template>

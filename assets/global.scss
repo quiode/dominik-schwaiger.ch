@@ -40,45 +40,51 @@ $page-transition-duration: 0.4s;
 }
 
 // fill screen with content (only now mobile)
-@media screen and (min-width: 768px) {
-    html {
-        &.fill-content {
+@mixin fill-screen {
+    height: 100%;
+    margin: 0;
+
+    transition: all;
+    transition-delay: $page-transition-duration;
+    transition-duration: 0s;
+
+    body {
+        height: 100%;
+        margin: 0;
+
+
+        &>div {
+            display: flex;
+            flex-flow: column;
             height: 100%;
-            margin: 0;
 
-            transition: all;
-            transition-delay: $page-transition-duration;
-            transition-duration: 0s;
-
-            body {
+            &>div {
+                display: flex;
                 height: 100%;
-                margin: 0;
+                flex-direction: column;
+                margin-top: 0.1%;
 
+                &>nav {
+                    flex: 0 1 auto;
+                }
 
                 &>div {
+                    flex: 1 1 auto;
+                    justify-content: center;
+                    align-items: center;
                     display: flex;
-                    flex-flow: column;
-                    height: 100%;
-
-                    &>div {
-                        display: flex;
-                        height: 100%;
-                        flex-direction: column;
-                        margin-top: 0.1%;
-
-                        &>nav {
-                            flex: 0 1 auto;
-                        }
-
-                        &>div {
-                            flex: 1 1 auto;
-                            justify-content: center;
-                            align-items: center;
-                            display: flex;
-                        }
-                    }
                 }
             }
         }
     }
+}
+
+@media screen and (min-width: 768px) {
+    html.fill-content {
+        @include fill-screen;
+    }
+}
+
+html.fill-content.mobile-fill-content {
+    @include fill-screen;
 }

@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+  import Vr1 from './vr.vue';
   const route = useRoute();
 </script>
 
@@ -12,25 +13,25 @@
         <NuxtLink to="/home">Home</NuxtLink>
       </div>
 
-      <div class="vr"></div>
+      <Vr class="vr"></Vr>
 
-      <div class="item" :class="{ underline: route.name == 'top5' }">
-        <NuxtLink to="/top5">Projects</NuxtLink>
+      <div class="item" :class="{ underline: route.name == 'projects' }">
+        <NuxtLink to="/projects">Projects</NuxtLink>
       </div>
 
-      <div class="vr"></div>
+      <Vr class="vr"></Vr>
 
       <div class="item" :class="{ underline: route.name == 'linktree' }">
         <NuxtLink to="/linktree">Linktree</NuxtLink>
       </div>
 
-      <div class="vr"></div>
+      <Vr class="vr"></Vr>
 
       <div class="item" :class="{ underline: route.name == 'documents' }">
         <NuxtLink to="/documents">Documents</NuxtLink>
       </div>
 
-      <div class="vr"></div>
+      <Vr class="vr"></Vr>
 
       <div class="item" :class="{ underline: route.name == 'impressum' }">
         <NuxtLink to="/impressum">Impressum</NuxtLink>
@@ -96,6 +97,7 @@
     .vr {
       width: 1px;
       background-color: $primary-color;
+      height: initial;
     }
 
     .underline {
