@@ -21,3 +21,18 @@ a {
         color: $primary-color;
     }
 }
+
+// animations
+.page-enter-active,
+.page-leave-active {
+    transition: transform 0.4s linear;
+    overflow: hidden !important;
+}
+
+.page-enter-from {
+    transform: translateY(+100vh);
+}
+
+.page-leave-to {
+    transform: translateY(calc(-100% - 25vh));
+}

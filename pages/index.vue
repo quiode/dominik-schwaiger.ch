@@ -46,7 +46,7 @@
     @media screen and (max-width: 768px) {
       grid-template-columns: auto !important;
 
-      top: 5% !important;
+      top: 10% !important;
     }
   }
 

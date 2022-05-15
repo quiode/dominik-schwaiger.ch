@@ -40,7 +40,7 @@
 <style lang="scss" scoped>
   #container {
     @media screen and (max-width: 768px) {
-      width: 100vw;
+      width: 90%;
     }
 
     width: 50%;

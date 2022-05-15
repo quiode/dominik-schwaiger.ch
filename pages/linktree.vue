@@ -15,9 +15,11 @@
 </script>
 
 <template>
-  <div id="container">
-    <div class="link" v-for="link in links">
-      <a :href="link.url" target="_blank">{{ link.text }}</a>
+  <div>
+    <div id="container">
+      <div class="link" v-for="link in links">
+        <a :href="link.url" target="_blank">{{ link.text }}</a>
+      </div>
     </div>
   </div>
 </template>
@@ -51,6 +53,10 @@
     @media screen and (max-width: 768px) {
       margin-top: 35%;
       font-size: 1em !important;
+    }
+
+    @media screen and (max-width: 1024px) {
+      font-size: 1.5em !important;
     }
 
     /* hover */

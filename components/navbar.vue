@@ -48,6 +48,7 @@
     position: relative;
     width: 100%;
     height: 5%;
+    z-index: 5;
 
     #items {
       // flex
