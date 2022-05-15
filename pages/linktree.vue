@@ -11,6 +11,10 @@
       text: 'LinkedIn',
       url: 'https://www.linkedin.com/in/dominik-schwaiger-1a7a20226/',
     },
+    {
+      text: 'Email',
+      url: 'mailto:mail@dominik-schwaiger.ch',
+    },
   ];
 </script>
 
@@ -38,7 +42,7 @@
     }
   }
   .link {
-    margin-top: 10%;
+    margin-top: 7%;
     padding: 5% 0;
     border: 1px;
     border-style: solid;
@@ -48,7 +52,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 5em;
+    font-size: 2em;
 
     @media screen and (max-width: 768px) {
       margin-top: 35%;
@@ -56,7 +60,7 @@
     }
 
     @media screen and (max-width: 1400px) {
-      font-size: 1.5em !important;
+      font-size: 1.25em !important;
     }
 
     /* hover */
