@@ -15,6 +15,18 @@
       path: 'gpg.asc',
     },
   ];
+
+  onMounted(() => {
+    setTimeout(() => {
+      document.documentElement.classList.add('fill-content');
+    }, 400);
+  });
+
+  onUnmounted(() => {
+    setTimeout(() => {
+      document.documentElement.classList.remove('fill-content');
+    }, 400);
+  });
 </script>
 
 <template>
