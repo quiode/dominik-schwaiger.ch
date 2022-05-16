@@ -1,32 +1,32 @@
 <script lang="ts" setup>
-  onMounted(() => {
-    // if fill-content is included in classList, wait a little bit
-    // to make sure it's done
+onMounted(() => {
+  // if fill-content is included in classList, wait a little bit
+  // to make sure it's done
 
-    let delay = 400;
+  // let delay = 400;
 
-    if (document.documentElement.classList.contains('fill-content')) {
-      delay = 450;
-    }
+  // if (document.documentElement.classList.contains('fill-content')) {
+  //   delay = 450;
+  // }
 
-    setTimeout(() => {
-      document.documentElement.classList.add('fill-content');
-    }, delay);
-  });
+  // setTimeout(() => {
+  //   document.documentElement.classList.add('fill-content');
+  // }, delay);
+});
 
-  onUnmounted(() => {
-    setTimeout(() => {
-      document.documentElement.classList.remove('fill-content');
-      console.log('0');
-    }, 400);
-  });
+onUnmounted(() => {
+  setTimeout(() => {
+    document.documentElement.classList.remove('fill-content');
+    console.log('0');
+  }, 400);
+});
 
-  const projects: {
-    imageSrc?: string;
-    links?: { icon: string; url: string }[];
-    tools?: { icon: string; url: string }[];
-    text?: string;
-  }[] = [
+const projects: {
+  imageSrc?: string;
+  links?: { icon: string; url: string }[];
+  tools?: { icon: string; url: string }[];
+  text?: string;
+}[] = [
     {
       imageSrc: 'nowple.png',
       links: [
@@ -47,10 +47,6 @@
         {
           icon: 'nestjs.svg',
           url: 'https://nestjs.com/',
-        },
-        {
-          icon: 'tauri.svg',
-          url: 'https://tauri.studio/',
         },
         {
           icon: 'bootstrap.svg',
@@ -83,88 +79,145 @@
       ],
       text: 'Simple configurations and scripts for various linux distributions.',
     },
+    {
+      imageSrc: 'heebphotography.png',
+      links: [
+        {
+          icon: 'instagram.svg',
+          url: 'https://www.instagram.com/heebphotography/',
+        }, {
+          icon: 'github.svg',
+          url: 'https://github.com/quiode/Website-Andi'
+        },
+        // {
+        //   icon: 'github.svg',
+        //   url: 'https://github.com/quiode/Website-Andi-GUI'
+        // },
+        {
+          icon: 'globe.svg',
+          url: 'https://heebphotography.ch'
+        }
+      ],
+      tools: [
+        {
+          icon: 'php.svg',
+          url: 'https://www.php.net/'
+        },
+        {
+          icon: 'python.svg',
+          url: 'https://www.python.org/'
+        },
+        {
+          icon: 'apache.svg',
+          url: 'https://www.apache.org'
+        }
+      ],
+      text: 'A website and desktop application for a young photographer. The website is mainly used to display his work and the desktop application is used for uploading the images and giving them a watermark.'
+    },
+    {
+      imageSrc: 'chris.png',
+      text: 'A website for a young multimedia creator. Mainly used for uploading his work in photography, music and film production.',
+      links: [
+        {
+          icon: 'instagram.svg',
+          url: 'https://www.instagram.com/chrisps_photography/',
+        }, {
+          icon: 'github.svg',
+          url: 'https://github.com/quiode/Website-Chris'
+        },
+        // {
+        //   icon: 'github.svg',
+        //   url: 'https://github.com/quiode/Website-Andi-GUI'
+        // },
+        {
+          icon: 'globe.svg',
+          url: 'https://christoph-baertsch.ch/#/stills'
+        }
+      ],
+      tools: [],
+    }
   ];
 </script>
 
 <template>
   <div id="outer-container">
-    <div
-      v-for="(project, index) in projects"
-      :key="index"
-      :style="{
-        animationName: index % 2 == 0 ? 'flyInFromRight' : 'flyInFromLeft',
-        animationDuration: 2 + index * 0.25 + 's',
-      }"
-      class="inner-container"
-    >
+    <div v-for="(project, index) in projects" :key="index" :style="{
+      animationName: index % 2 == 0 ? 'flyInFromRight' : 'flyInFromLeft',
+      animationDuration: 2 + index * 0.25 + 's',
+    }" class="inner-container">
       <Project v-bind="project" />
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+#outer-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+  overflow: hidden;
+}
+
+.inner-container {
+  @media screen and (min-width: 764px) {
+    margin-top: 4vh;
+  }
+
+  width: 90%;
+
+  // fly in from the left at the start
+  animation: flyInFromLeft 2s ease-in-out forwards;
+}
+
+@media (max-width: 768px) {
   #outer-container {
-    display: flex;
     width: 100%;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
-    align-items: center;
-    align-content: center;
-    overflow: hidden;
   }
 
   .inner-container {
-    width: 90%;
-
-    // fly in from the left at the start
-    animation: flyInFromLeft 2s ease-in-out forwards;
-  }
-
-  @media (max-width: 768px) {
-    #outer-container {
-      width: 100%;
+    &:first-child {
+      margin-top: 0.5em;
     }
-    .inner-container {
-      &:first-child {
-        margin-top: 0.5em;
-      }
 
-      &:last-child {
-        margin-bottom: 1em;
-      }
-
-      margin-top: 5em;
+    &:last-child {
+      margin-bottom: 1em;
     }
+
+    margin-top: 5em;
   }
+}
 </style>
 
 <style>
-  @keyframes flyInFromLeft {
-    0% {
-      transform: translateX(-100vw);
-    }
-
-    25% {
-      transform: translateX(-100vw);
-    }
-
-    100% {
-      transform: translateX(0);
-    }
+@keyframes flyInFromLeft {
+  0% {
+    transform: translateX(-100vw);
   }
 
-  @keyframes flyInFromRight {
-    0% {
-      transform: translateX(100vw);
-    }
-
-    25% {
-      transform: translateX(100vw);
-    }
-
-    100% {
-      transform: translateX(0);
-    }
+  25% {
+    transform: translateX(-100vw);
   }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes flyInFromRight {
+  0% {
+    transform: translateX(100vw);
+  }
+
+  25% {
+    transform: translateX(100vw);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
 </style>
