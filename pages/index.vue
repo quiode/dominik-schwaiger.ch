@@ -50,18 +50,18 @@ const age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365.25);
   display: grid;
   grid-template-columns: auto auto;
   gap: 5%;
-  width: 50%;
+  width: 75%;
   position: relative;
   top: 2.5%;
 
   @media screen and (max-width: 768px) {
     grid-template-columns: auto !important;
 
-    top: 10% !important;
+    top: 1em !important;
+
+    width: 80%;
   }
 }
-
-#text {}
 
 #avatar-container {
   @media screen and (max-width: 768px) {
@@ -75,18 +75,22 @@ const age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365.25);
 #avatar {
   $border: 4px;
   $z-index: 1;
-  $width: 250px;
+  $width: 300px;
   width: $width;
   aspect-ratio: 1/1;
 
+  @media screen and (min-width: 768px) {
+    transform: translateY(5em);
+  }
+
   @media screen and (max-width: 768px) {
-    $width-new: 75%;
+    $width-new: initial;
 
     width: $width-new !important;
 
     &::before {
-      width: $width-new !important;
-      left: calc((100% - $width-new) / 2) - 1% !important;
+      display: block;
+      width: 100% !important;
     }
   }
 
@@ -127,6 +131,10 @@ const age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365.25);
 }
 
 #text {
-  font-size: xx-large;
+  font-size: 2.5em;
+
+  @media screen and (max-width: 768px) {
+    font-size: large;
+  }
 }
 </style>
