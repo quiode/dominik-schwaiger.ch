@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-  defineProps<{
-    imageSrc?: string;
-    links?: { icon: string; url: string }[];
-    tools?: { icon: string; url: string }[];
-    text?: string;
-  }>();
+defineProps<{
+  imageSrc?: string;
+  links?: { icon: string; url: string }[];
+  tools?: { icon: string; url: string }[];
+  text?: string;
+}>();
 </script>
 
 <template>
@@ -37,127 +37,128 @@
 </template>
 
 <style lang="scss" scoped>
-  @import '../assets/colors.scss';
+@import '../assets/colors.scss';
 
-  #container {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
-    align-items: center;
-    align-content: center;
-    height: 10em;
+#container {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+  height: 10em;
 
-    border: solid $secondary-color;
+  border: solid $secondary-color;
+  border-radius: 20px;
+
+  #image {
+    height: 70%;
+
+    img {
+      width: auto;
+      height: 100%;
+    }
+  }
+
+  #text {
+    // font-size: 1.5em;
+    max-height: 90%;
+    max-width: 30%;
+  }
+
+  #links {
+    // border: solid $secondary-color;
     border-radius: 20px;
+    padding: 0.1em 1em;
+    word-break: break-all;
 
-    #image {
-      height: 70%;
-
-      img {
-        width: auto;
-        height: 100%;
-      }
-    }
-
-    #text {
-      // font-size: 1.5em;
-      max-height: 90%;
-      max-width: 30%;
-    }
-
-    #links {
-      // border: solid $secondary-color;
-      border-radius: 20px;
-      padding: 0.1em 1em;
-
-      div {
-        margin: 0.4em 0;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: space-evenly;
-        align-items: center;
-        align-content: center;
-
-        img {
-          width: 2.5em;
-
-          transition: transform 0.2s ease;
-
-          &:hover {
-            transform: rotate(10deg);
-          }
-        }
-
-        .link-text {
-          margin-left: 10%;
-          width: 15em;
-
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-      }
-    }
-
-    #tools {
-      // border: solid $secondary-color;
-      border-radius: 20px;
-      padding: 0.5em;
+    div {
+      margin: 0.4em 0;
       display: flex;
-      flex-wrap: wrap;
       flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-evenly;
+      align-items: center;
+      align-content: center;
 
       img {
-        width: auto;
-        height: 2.5em;
-        margin: 0.2em;
+        width: 2.5em;
 
         transition: transform 0.2s ease;
 
         &:hover {
-          transform: scale(1.5);
+          transform: rotate(10deg);
+        }
+      }
+
+      .link-text {
+        margin-left: 10%;
+        width: 15em;
+
+        &:hover {
+          text-decoration: underline;
         }
       }
     }
-
-    .vr {
-      background-color: $quaternary-color;
-    }
   }
 
-  @media screen and (max-width: 768px) {
-    #container {
-      flex-direction: column;
-      height: 100%;
-      padding-top: 0.5em;
-    }
+  #tools {
+    // border: solid $secondary-color;
+    border-radius: 20px;
+    padding: 0.5em;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 
-    #image {
-      width: 70%;
-      height: auto !important;
+    img {
+      width: auto;
+      height: 2.5em;
+      margin: 0.2em;
 
-      img {
-        width: 100% !important;
-        height: auto !important;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: scale(1.5);
       }
     }
+  }
 
-    .vr {
-      width: 50% !important;
-      height: 1px;
-      flex-shrink: 0;
-      margin: 1.5em 0;
-    }
+  .vr {
+    background-color: $quaternary-color;
+  }
+}
 
-    #text {
-      width: 90% !important;
+@media screen and (max-width: 768px) {
+  #container {
+    flex-direction: column;
+    height: 100%;
+    padding-top: 0.5em;
+  }
+
+  #image {
+    width: 70%;
+    height: auto !important;
+
+    img {
+      width: 100% !important;
       height: auto !important;
-      max-width: initial !important;
-      max-height: initial !important;
-      text-align: center;
     }
   }
+
+  .vr {
+    width: 50% !important;
+    height: 1px;
+    flex-shrink: 0;
+    margin: 1.5em 0;
+  }
+
+  #text {
+    width: 90% !important;
+    height: auto !important;
+    max-width: initial !important;
+    max-height: initial !important;
+    text-align: center;
+  }
+}
 </style>
