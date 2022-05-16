@@ -1,7 +1,11 @@
 <script lang="ts" setup>
-  definePageMeta({
-    alias: '/home',
-  });
+definePageMeta({
+  alias: '/home',
+});
+
+const birthday = 1078873200000;
+const timeDiff = Math.abs(Date.now() - birthday);
+const age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365.25);
 </script>
 
 <template>
@@ -12,107 +16,117 @@
           <img src="/avatar.jpg" />
         </div>
       </div>
-      <div id="text">Welcome to my website!</div>
+      <div id="text">
+        <h1>Welcome to my website!</h1>
+        <br>
+        I am an {{ age }} year old programmer interested technology. I like to try out new technologies and am not
+        afraid to learn new things. Currently I work mainly on websites or similar, but I have also tried out other
+        areas of software. I am also not afraid of hardware and therefore I have also tinkered there. For example, I
+        built an 8-bit processor for my final thesis.
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-  @import '../assets/colors.scss';
+@import '../assets/colors.scss';
 
-  #root {
+#root {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  // width: 100vw;
+  // height: 100vh;
+  margin: 0;
+  margin-top: 1.5%;
+  padding: 0;
+
+  @media screen and (max-width: 768px) {
+    text-align: center;
+  }
+}
+
+#container {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 5%;
+  width: 50%;
+  position: relative;
+  top: 2.5%;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: auto !important;
+
+    top: 10% !important;
+  }
+}
+
+#text {}
+
+#avatar-container {
+  @media screen and (max-width: 768px) {
     display: flex;
     justify-content: center;
-    position: relative;
-    // width: 100vw;
-    // height: 100vh;
-    margin: 0;
-    margin-top: 1.5%;
-    padding: 0;
-
-    @media screen and (max-width: 768px) {
-      text-align: center;
-    }
+    align-items: center;
+    width: 100%;
   }
+}
 
-  #container {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 5%;
-    width: 50%;
-    position: relative;
-    top: 2.5%;
+#avatar {
+  $border: 4px;
+  $z-index: 1;
+  $width: 250px;
+  width: $width;
+  aspect-ratio: 1/1;
 
-    @media screen and (max-width: 768px) {
-      grid-template-columns: auto !important;
+  @media screen and (max-width: 768px) {
+    $width-new: 75%;
 
-      top: 10% !important;
-    }
-  }
+    width: $width-new !important;
 
-  #text {
-  }
-
-  #avatar-container {
-    @media screen and (max-width: 768px) {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-    }
-  }
-
-  #avatar {
-    $border: 4px;
-    $z-index: 1;
-    $width: 250px;
-    width: $width;
-    aspect-ratio: 1/1;
-
-    @media screen and (max-width: 768px) {
-      $width-new: 75%;
-
+    &::before {
       width: $width-new !important;
-
-      &::before {
-        width: $width-new !important;
-        left: calc((100% - $width-new) / 2) - 1% !important;
-      }
+      left: calc((100% - $width-new) / 2) - 1% !important;
     }
+  }
 
-    img {
-      position: relative;
-      object-fit: fill;
-      border-radius: 50%;
-      width: 100%;
-      height: 100%;
-      z-index: $z-index;
-      transition: transform 1s ease;
+  img {
+    position: relative;
+    object-fit: fill;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    z-index: $z-index;
+    transition: transform 1s ease;
 
-      &:hover {
+    &:hover {
+      transform: rotate(360deg);
+    }
+  }
+
+  &::before {
+    @keyframes spin {
+      100% {
         transform: rotate(360deg);
       }
     }
 
-    &::before {
-      @keyframes spin {
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      // gradient border
-      content: '';
-      position: absolute;
-      top: -$border;
-      left: -$border;
-      padding: $border;
-      width: $width;
-      aspect-ratio: 1/1;
-      border-radius: 50%;
-      background: $gradient-light-top;
-      z-index: calc($z-index - 1);
-      animation: spin 4s linear infinite;
-    }
+    // gradient border
+    content: '';
+    position: absolute;
+    top: -$border;
+    left: -$border;
+    padding: $border;
+    width: $width;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background: $gradient-light-top;
+    z-index: calc($z-index - 1);
+    animation: spin 4s linear infinite;
   }
+}
+
+#text {
+  font-size: xx-large;
+}
 </style>
