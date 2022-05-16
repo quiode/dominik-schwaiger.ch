@@ -9,7 +9,7 @@
   "version": "0.2.1",
   "license": "MIT",
   "engines": {
-    "node": "^16.15.0"
+    "node": ">=16.15.0"
   },
   "scripts": {
     "build": "nuxt build",
