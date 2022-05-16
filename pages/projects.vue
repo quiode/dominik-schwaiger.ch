@@ -134,7 +134,20 @@ const projects: {
           url: 'https://christoph-baertsch.ch/#/stills'
         }
       ],
-      tools: [],
+      tools: [
+        {
+          icon: 'angular.svg',
+          url: 'https://angular.io/',
+        },
+        {
+          icon: 'nestjs.svg',
+          url: 'https://nestjs.com/',
+        },
+        {
+          icon: 'bootstrap.svg',
+          url: 'https://getbootstrap.com/',
+        },
+      ],
     }
   ];
 </script>
