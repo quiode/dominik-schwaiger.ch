@@ -39,6 +39,11 @@ const documents: {
       name: 'Final Thesis',
       icon: 'bi-file-earmark-pdf',
       path: 'Schwaiger - Bau eines 8-Bit Prozessors.pdf'
+    },
+    {
+      name: 'Swiss Maturity Diploma',
+      icon: 'bi-mortarboard',
+      path: 'Maturitätszeugniss.pdf',
     }
   ];
 </script>
@@ -75,8 +80,8 @@ const documents: {
     cursor: pointer;
     border-color: $secondary-color;
     border-radius: 2em;
-    padding: 5em;
-    margin: 5em;
+    padding: 3em;
+    margin: 3em;
     border-style: solid;
 
     &:hover {
