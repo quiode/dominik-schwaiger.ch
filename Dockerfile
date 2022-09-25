@@ -2,9 +2,9 @@
 FROM node:16
 ADD . /dominik-schwaiger.ch
 WORKDIR /dominik-schwaiger.ch
-RUN ls
-RUN npm install
-RUN npm run build
+RUN npm install -g pnpm
+RUN pnpm install --shamefully-hoist
+RUN pnpm run build
 
 # Configuration
 LABEL version="1.0.5"
