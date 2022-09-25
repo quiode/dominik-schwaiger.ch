@@ -7,7 +7,7 @@ RUN npm install
 RUN npm run build
 
 # Configuration
-LABEL version="1.0.4"
+LABEL version="1.0.5"
 LABEL author="Dominik Schwaiger"
 LABEL email="mail@dominik-schwaiger.ch"
 LABEL homepage="dominik-schwaiger.ch"
