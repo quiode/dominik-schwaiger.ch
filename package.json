@@ -6,7 +6,7 @@
 		"url": "https://dominik-schwaiger.ch"
 	},
 	"description": "My personal Website",
-	"version": "1.0.8",
+	"version": "1.1.0",
 	"license": "MIT",
 	"engines": {
 		"node": ">=16.15.0"
