@@ -1,41 +1,48 @@
 <script lang="ts" setup>
-  import Vr1 from './vr.vue';
-  const route = useRoute();
+import Vr1 from './vr.vue';
+const route = useRoute();
+const localePath = useLocalePath();
+const switchLocalePath = useSwitchLocalePath();
 </script>
 
 <template>
   <nav>
     <hr />
 
-    <div id="title"></div>
     <div id="items">
       <div class="item" :class="{ underline: route.name == 'index' }">
-        <NuxtLink to="/home">Home</NuxtLink>
+        <NuxtLink :to="localePath('/home')">{{ $t('home') }}</NuxtLink>
       </div>
 
       <Vr class="vr"></Vr>
 
       <div class="item" :class="{ underline: route.name == 'projects' }">
-        <NuxtLink to="/projects">Projects</NuxtLink>
+        <NuxtLink :to="localePath('/projects')">{{ $t('projects') }}</NuxtLink>
       </div>
 
       <Vr class="vr"></Vr>
 
       <div class="item" :class="{ underline: route.name == 'linktree' }">
-        <NuxtLink to="/linktree">Linktree</NuxtLink>
+        <NuxtLink :to="localePath('/linktree')">{{ $t('linktree') }}</NuxtLink>
       </div>
 
       <Vr class="vr"></Vr>
 
       <div class="item" :class="{ underline: route.name == 'documents' }">
-        <NuxtLink to="/documents">Documents</NuxtLink>
+        <NuxtLink :to="localePath('/documents')">{{ $t('documents') }}</NuxtLink>
       </div>
 
       <Vr class="vr"></Vr>
 
       <div class="item" :class="{ underline: route.name == 'impressum' }">
-        <NuxtLink to="/impressum">Impressum</NuxtLink>
+        <NuxtLink :to="localePath('/impressum')">{{ $t('impressum') }}</NuxtLink>
       </div>
+    </div>
+
+
+    <div id="lang">
+      <NuxtLink :to="switchLocalePath('en')">English</NuxtLink>
+      <NuxtLink :to="switchLocalePath('de')">Deutsch</NuxtLink>
     </div>
 
     <hr />
@@ -43,65 +50,65 @@
 </template>
 
 <style lang="scss" scoped>
-  @import '../assets/colors.scss';
+@import '../assets/colors.scss';
 
-  nav {
+nav {
+  position: relative;
+  width: 100%;
+  height: 5%;
+  z-index: 5;
+
+  #items {
+    // flex
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    // everythin else
     position: relative;
-    width: 100%;
-    height: 5%;
-    z-index: 5;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35%;
 
-    #items {
-      // flex
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
+    @media screen and (max-width: 768px) {
+      width: 90%;
+    }
 
-      // everythin else
-      position: relative;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 35%;
+    .item {
+      color: $primary-color;
+      text-decoration: none;
+      $margin: 1%;
+      margin: 0 $margin;
 
-      @media screen and (max-width: 768px) {
-        width: 90%;
+      :visited {
+        color: $primary-color;
       }
 
-      .item {
+      :hover {
+        color: $primary-color;
+        opacity: 0.8;
+      }
+
+      :active {
+        color: $primary-color;
+        text-decoration: underline;
+      }
+
+      :link {
         color: $primary-color;
         text-decoration: none;
-        $margin: 1%;
-        margin: 0 $margin;
-
-        :visited {
-          color: $primary-color;
-        }
-
-        :hover {
-          color: $primary-color;
-          opacity: 0.8;
-        }
-
-        :active {
-          color: $primary-color;
-          text-decoration: underline;
-        }
-
-        :link {
-          color: $primary-color;
-          text-decoration: none;
-        }
       }
     }
-
-    .vr {
-      width: 1px;
-      background-color: $primary-color;
-      height: initial;
-    }
-
-    .underline {
-      text-decoration: solid underline !important;
-    }
   }
+
+  .vr {
+    width: 1px;
+    background-color: $primary-color;
+    height: initial;
+  }
+
+  .underline {
+    text-decoration: solid underline !important;
+  }
+}
 </style>

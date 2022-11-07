@@ -1,19 +1,4 @@
 <script lang="ts" setup>
-onMounted(() => {
-  // if fill-content is included in classList, wait a little bit
-  // to make sure it's done
-
-  // let delay = 400;
-
-  // if (document.documentElement.classList.contains('fill-content')) {
-  //   delay = 450;
-  // }
-
-  // setTimeout(() => {
-  //   document.documentElement.classList.add('fill-content');
-  // }, delay);
-});
-
 onUnmounted(() => {
   setTimeout(() => {
     document.documentElement.classList.remove('fill-content');
@@ -89,10 +74,6 @@ const projects: {
           icon: 'github.svg',
           url: 'https://github.com/quiode/Website-Andi'
         },
-        // {
-        //   icon: 'github.svg',
-        //   url: 'https://github.com/quiode/Website-Andi-GUI'
-        // },
         {
           icon: 'globe.svg',
           url: 'https://heebphotography.ch'
@@ -125,10 +106,6 @@ const projects: {
           icon: 'github.svg',
           url: 'https://github.com/quiode/Website-Chris'
         },
-        // {
-        //   icon: 'github.svg',
-        //   url: 'https://github.com/quiode/Website-Andi-GUI'
-        // },
         {
           icon: 'globe.svg',
           url: 'https://christoph-baertsch.ch/#/stills'
