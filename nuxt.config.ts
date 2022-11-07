@@ -13,4 +13,6 @@ export default defineNuxtConfig({
 		'~/assets/global.scss',
 		'bootstrap-icons/font/bootstrap-icons.scss',
 	],
+	modules: ['@nuxtjs/i18n'],
+	i18n: {},
 });
