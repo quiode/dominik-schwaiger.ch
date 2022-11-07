@@ -7,10 +7,10 @@ RUN pnpm install --shamefully-hoist
 RUN pnpm run build
 
 # Configuration
-LABEL version="1.0.8"
+LABEL version="1.1.0"
 LABEL author="Dominik Schwaiger"
 LABEL email="mail@dominik-schwaiger.ch"
-LABEL homepage="dominik-schwaiger.ch"
+LABEL homepage="https://dominik-schwaiger.ch"
 LABEL description="My personal website"
 LABEL ch.dominik-schwaiger.image.authors="mail@dominik-schwaiger.ch"
 
