@@ -9,40 +9,42 @@ const switchLocalePath = useSwitchLocalePath();
   <nav>
     <hr />
 
+    <div id="lang">
+      <NuxtLink class="lang" :class="{ active: $i18n.locale == 'en' }" :to="switchLocalePath('en')">en</NuxtLink>
+      <Vr style="margin: 8% 0;" class="vr"></Vr>
+      <NuxtLink class="lang" :class="{ active: $i18n.locale == 'de' }" :to="switchLocalePath('de')">de</NuxtLink>
+    </div>
+
+    <hr id="mobile_hr" />
+
     <div id="items">
-      <div class="item" :class="{ underline: route.name == 'index' }">
+      <div class="item">
         <NuxtLink :to="localePath('/home')">{{ $t('home') }}</NuxtLink>
       </div>
 
       <Vr class="vr"></Vr>
 
-      <div class="item" :class="{ underline: route.name == 'projects' }">
+      <div class="item">
         <NuxtLink :to="localePath('/projects')">{{ $t('projects') }}</NuxtLink>
       </div>
 
       <Vr class="vr"></Vr>
 
-      <div class="item" :class="{ underline: route.name == 'linktree' }">
+      <div class="item">
         <NuxtLink :to="localePath('/linktree')">{{ $t('linktree') }}</NuxtLink>
       </div>
 
       <Vr class="vr"></Vr>
 
-      <div class="item" :class="{ underline: route.name == 'documents' }">
+      <div class="item">
         <NuxtLink :to="localePath('/documents')">{{ $t('documents') }}</NuxtLink>
       </div>
 
       <Vr class="vr"></Vr>
 
-      <div class="item" :class="{ underline: route.name == 'impressum' }">
+      <div class="item">
         <NuxtLink :to="localePath('/impressum')">{{ $t('impressum') }}</NuxtLink>
       </div>
-    </div>
-
-
-    <div id="lang">
-      <NuxtLink :to="switchLocalePath('en')">English</NuxtLink>
-      <NuxtLink :to="switchLocalePath('de')">Deutsch</NuxtLink>
     </div>
 
     <hr />
@@ -57,6 +59,47 @@ nav {
   width: 100%;
   height: 5%;
   z-index: 5;
+
+  #mobile_hr {
+    display: none;
+
+    @media screen and (max-width: 768px) {
+      display: block;
+      margin: 8px 15vw;
+    }
+  }
+
+
+  #lang {
+    position: absolute;
+    right: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+
+    @media screen and (max-width: 768px) {
+      position: relative;
+      left: 50vw;
+      transform: translateX(-50%);
+      width: fit-content;
+    }
+
+    .lang {
+      margin: 0 2px;
+
+      @media screen and (max-width: 768px) {
+        margin: 0 8px;
+      }
+
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+
+    .active {
+      color: $secondary-color;
+      text-decoration: none !important;
+    }
+  }
 
   #items {
     // flex
@@ -107,7 +150,7 @@ nav {
     height: initial;
   }
 
-  .underline {
+  .router-link-active {
     text-decoration: solid underline !important;
   }
 }
