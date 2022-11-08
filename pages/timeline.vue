@@ -37,9 +37,10 @@ function randomNumber(min: number, max: number): number {
             // width: 2px;
             // height: 20px;
             // border-radius: 0px;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
+            // width: 5px;
+            // height: 5px;
+            // border-radius: 50%;
+            // animation-play-state: paused;
         }
     }
 }
