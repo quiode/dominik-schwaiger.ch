@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+const { t } = useI18n();
+
 onMounted(() => {
   // if fill-content is included in classList, wait a little bit
   // to make sure it's done
@@ -26,22 +28,22 @@ const documents: {
   path: string;
 }[] = [
     {
-      name: 'Curriculum Vitae',
+      name: t('cv'),
       icon: 'bi-file-earmark-person',
       path: 'cv.pdf',
     },
     {
-      name: 'GPG Key',
+      name: t('gpg'),
       icon: 'bi-fingerprint',
       path: 'gpg.asc',
     },
     {
-      name: 'Final Thesis',
+      name: t('thesis'),
       icon: 'bi-file-earmark-pdf',
       path: 'Schwaiger - Bau eines 8-Bit Prozessors.pdf'
     },
     {
-      name: 'Swiss Maturity Diploma',
+      name: t('matura'),
       icon: 'bi-mortarboard',
       path: 'Maturitätszeugniss.pdf',
     }
