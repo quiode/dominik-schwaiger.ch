@@ -5,6 +5,7 @@ function randomNumber(min: number, max: number): number {
 </script>
 
 <template>
+    <img id="earth" src="/earth.svg">
     <div id="stem">
         <div :style="{left: randomNumber(1,99) + '%', animationDuration: randomNumber(10000,50000) + 'ms', animationDelay: randomNumber(0, 20000) + 'ms'}"
             v-for="_ in 1000" class="light">
@@ -15,19 +16,27 @@ function randomNumber(min: number, max: number): number {
 <style scoped lang="scss">
 @import '../assets/colors.scss';
 
+#earth {
+    width: 5vw;
+    height: 5vw;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    background-color: $background-color;
+}
+
 #stem {
-    /* From https://css.glass */
     position: absolute;
     width: 5vw;
     left: 50%;
     transform: translateX(-50%);
     height: 100%;
-    background: rgba($primary-color, 0.2);
-    border-radius: 20px 20px 0px 0px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba($primary-color, 0.3);
+
+    animation-timing-function: ease-in;
+    animation-duration: 3s;
+    animation-name: expand;
+    animation-iteration-count: 1;
 
     overflow: hidden;
 
@@ -54,7 +63,7 @@ function randomNumber(min: number, max: number): number {
     // height: 5px;
     // border-radius: 50%;
     position: absolute;
-    animation: light ease-in infinite;
+    animation: light ease-in infinite reverse;
     visibility: hidden;
 
     transition-property: width height border-radius;
@@ -73,6 +82,16 @@ function randomNumber(min: number, max: number): number {
         top: 100%;
         transform: translateY(+100%);
         visibility: visible;
+    }
+}
+
+@keyframes expand {
+    0% {
+        height: 0%;
+    }
+
+    100% {
+        height: 100%
     }
 }
 </style>
