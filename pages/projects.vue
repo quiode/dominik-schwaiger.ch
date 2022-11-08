@@ -1,25 +1,14 @@
 <script lang="ts" setup>
-onMounted(() => {
-  // if fill-content is included in classList, wait a little bit
-  // to make sure it's done
-
-  // let delay = 400;
-
-  // if (document.documentElement.classList.contains('fill-content')) {
-  //   delay = 450;
-  // }
-
-  // setTimeout(() => {
-  //   document.documentElement.classList.add('fill-content');
-  // }, delay);
-});
-
 onUnmounted(() => {
   setTimeout(() => {
     document.documentElement.classList.remove('fill-content');
     console.log('0');
   }, 400);
+
+
 });
+
+const { t } = useI18n()
 
 const projects: {
   imageSrc?: string;
@@ -53,7 +42,7 @@ const projects: {
           url: 'https://getbootstrap.com/',
         },
       ],
-      text: 'My final project in my informatics Course during the Kantonsschule Wattwil. This website is a simple dating website with a chat feature. The main selling point is the multitude of matching options.',
+      text: t('nowple'),
     },
     {
       imageSrc: 'troytd.png',
@@ -65,7 +54,7 @@ const projects: {
           url: 'https://www.java.com',
         },
       ],
-      text: ' A tower defence game. Based on the trojan war. Build with libGDX.',
+      text: t('troytd'),
     },
     {
       imageSrc: 'linux.svg',
@@ -77,7 +66,7 @@ const projects: {
           url: 'https://pop.system76.com/',
         },
       ],
-      text: 'Simple configurations and scripts for various linux distributions.',
+      text: t('dos'),
     },
     {
       imageSrc: 'heebphotography.png',
@@ -89,10 +78,6 @@ const projects: {
           icon: 'github.svg',
           url: 'https://github.com/quiode/Website-Andi'
         },
-        // {
-        //   icon: 'github.svg',
-        //   url: 'https://github.com/quiode/Website-Andi-GUI'
-        // },
         {
           icon: 'globe.svg',
           url: 'https://heebphotography.ch'
@@ -112,11 +97,11 @@ const projects: {
           url: 'https://www.apache.org'
         }
       ],
-      text: 'A website and desktop application for a young photographer. The website is mainly used to display his work and the desktop application is used for uploading the images and giving them a watermark.'
+      text: t('heebphotography')
     },
     {
       imageSrc: 'chris.png',
-      text: 'A website for a young multimedia creator. Mainly used for uploading his work in photography, music and film production.',
+      text: t('christophbaertsch'),
       links: [
         {
           icon: 'instagram.svg',
@@ -125,10 +110,6 @@ const projects: {
           icon: 'github.svg',
           url: 'https://github.com/quiode/Website-Chris'
         },
-        // {
-        //   icon: 'github.svg',
-        //   url: 'https://github.com/quiode/Website-Andi-GUI'
-        // },
         {
           icon: 'globe.svg',
           url: 'https://christoph-baertsch.ch/#/stills'

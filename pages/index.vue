@@ -17,12 +17,9 @@ const age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365.25);
         </div>
       </div>
       <div id="text">
-        <h1>Welcome to my website!</h1>
+        <h1>{{ $t('welcome') }}</h1>
         <br>
-        I am an {{ age }} year old programmer interested technology. I like to try out new technologies and am not
-        afraid to learn new things. Currently I work mainly on websites or similar, but I have also tried out other
-        areas of software. I am also not afraid of hardware and therefore I have also tinkered there. For example, I
-        built an 8-bit processor for my final thesis.
+        {{ $t('about_me') }}
       </div>
     </div>
   </div>

@@ -11,7 +11,7 @@ defineProps<{
   <div>
     <div id="container">
       <div id="image">
-        <img :src="imageSrc" />
+        <img :src="'/' + imageSrc" />
       </div>
       <Vr class="vr"></Vr>
       <div id="text">
@@ -20,7 +20,7 @@ defineProps<{
       <Vr class="vr"></Vr>
       <div id="links">
         <div v-for="link in links">
-          <a :href="link.url" target="_blank"><img :src="link.icon" /></a>
+          <a :href="link.url" target="_blank"><img :src="'/' + link.icon" /></a>
           <a target="_blank" class="link-text" :href="link.url">{{ link.url }}</a>
         </div>
       </div>
@@ -28,7 +28,7 @@ defineProps<{
       <div id="tools">
         <div v-for="tool in tools">
           <a :href="tool.url" target="_blank">
-            <img color="white" :src="tool.icon" />
+            <img color="white" :src="'/' + tool.icon" />
           </a>
         </div>
       </div>

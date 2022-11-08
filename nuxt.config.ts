@@ -13,4 +13,28 @@ export default defineNuxtConfig({
 		'~/assets/global.scss',
 		'bootstrap-icons/font/bootstrap-icons.scss',
 	],
+	modules: [
+		[
+			'@nuxtjs/i18n',
+			{
+				locales: [
+					{ code: 'en', file: 'en-GB.json' },
+					{ code: 'de', file: 'de-CH.json' },
+				],
+				defaultLocale: 'en',
+				strategy: 'prefix_and_default',
+				lazy: true,
+				langDir: 'lang',
+				detectBrowserLanguage: {
+					useCookie: true,
+					cookieKey: 'i18n_redirected',
+					redirectOn: 'root', // recommended
+				},
+				vueI18n: {
+					lecaly: false,
+					locale: 'en',
+				},
+			},
+		],
+	],
 });
