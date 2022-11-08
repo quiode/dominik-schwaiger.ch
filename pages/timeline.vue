@@ -6,8 +6,8 @@ function randomNumber(min: number, max: number): number {
 
 <template>
     <div id="stem">
-        <div :style="{left: randomNumber(1,99) + '%', animationDuration: randomNumber(1000,5000) + 'ms', animationDelay: randomNumber(0, 2000) + 'ms'}"
-            v-for="_ in 200" class="light">
+        <div :style="{left: randomNumber(1,99) + '%', animationDuration: randomNumber(10000,50000) + 'ms', animationDelay: randomNumber(0, 20000) + 'ms'}"
+            v-for="_ in 1000" class="light">
         </div>
     </div>
 </template>
@@ -34,18 +34,24 @@ function randomNumber(min: number, max: number): number {
     &:hover {
 
         .light {
-            width: 1px;
-            height: 20px;
-            border-radius: 0px;
+            // width: 2px;
+            // height: 20px;
+            // border-radius: 0px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
         }
     }
 }
 
 .light {
+    width: 2px;
+    height: 20px;
+    border-radius: 0px;
     background-color: $secondary-color;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
+    // width: 5px;
+    // height: 5px;
+    // border-radius: 50%;
     position: absolute;
     animation: light ease-in infinite;
     visibility: hidden;
