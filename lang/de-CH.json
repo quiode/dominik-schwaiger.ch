@@ -25,5 +25,6 @@
 	"copyright_text_1": "Diese Webseite ist unter der",
 	"copyright_text_2": "Lizenz veröffentlicht.",
 	"source": "Quelle: SwissAnwalt",
-	"404": "Datei nicht gefunden"
+	"404": "Datei nicht gefunden",
+	"arp": "Eine grafische Applikation, um neue Programme in das AUR hochzuladen oder bestehende Programme zu modifizieren. Wurde in Rust und mithilfe von GTK geschrieben."
 }

@@ -62,13 +62,11 @@ defineProps<{
   }
 
   #text {
-    // font-size: 1.5em;
     max-height: 90%;
     max-width: 30%;
   }
 
   #links {
-    // border: solid $secondary-color;
     border-radius: 20px;
     padding: 0.1em 1em;
     word-break: break-all;
@@ -104,7 +102,6 @@ defineProps<{
   }
 
   #tools {
-    // border: solid $secondary-color;
     border-radius: 20px;
     padding: 0.5em;
     display: flex;

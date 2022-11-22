@@ -17,6 +17,26 @@ const projects: {
   text?: string;
 }[] = [
     {
+      imageSrc: 'arp-logo.png',
+      links: [
+        {
+          icon: 'github.svg',
+          url: 'https://github.com/quiode/arp'
+        }
+      ],
+      text: t('arp'),
+      tools: [
+        {
+          icon: 'rust.png',
+          url: 'https://www.rust-lang.org/'
+        },
+        {
+          icon: 'gtk.svg',
+          url: 'https://www.gtk.org/'
+        }
+      ]
+    },
+    {
       imageSrc: 'nowple.png',
       links: [
         {
@@ -55,18 +75,6 @@ const projects: {
         },
       ],
       text: t('troytd'),
-    },
-    {
-      imageSrc: 'linux.svg',
-      links: [{ icon: 'github.svg', url: 'https://github.com/quiode/DOS' }],
-      tools: [
-        { icon: 'arch.svg', url: 'https://archlinux.org/' },
-        {
-          icon: 'pop.svg',
-          url: 'https://pop.system76.com/',
-        },
-      ],
-      text: t('dos'),
     },
     {
       imageSrc: 'heebphotography.png',
@@ -129,7 +137,19 @@ const projects: {
           url: 'https://getbootstrap.com/',
         },
       ],
-    }
+    },
+    {
+      imageSrc: 'linux.svg',
+      links: [{ icon: 'github.svg', url: 'https://github.com/quiode/DOS' }],
+      tools: [
+        { icon: 'arch.svg', url: 'https://archlinux.org/' },
+        {
+          icon: 'pop.svg',
+          url: 'https://pop.system76.com/',
+        },
+      ],
+      text: t('dos'),
+    },
   ];
 </script>
 
