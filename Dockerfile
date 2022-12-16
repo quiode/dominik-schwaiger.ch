@@ -1,7 +1,7 @@
 
 FROM node:16
 # Configuration
-LABEL version="2.1.1"
+LABEL version="2.2.0"
 LABEL author="Dominik Schwaiger"
 LABEL email="mail@dominik-schwaiger.ch"
 LABEL homepage="https://dominik-schwaiger.ch"
