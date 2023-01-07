@@ -5,15 +5,15 @@ LABEL email="mail@dominik-schwaiger.ch"
 LABEL homepage="https://dominik-schwaiger.ch"
 LABEL description="My personal website"
 LABEL ch.dominik-schwaiger.image.authors="mail@dominik-schwaiger.ch"
-LABEL version="2.2.0"
+LABEL version="2.2.1"
 
 # install programms
 RUN npm install -g pnpm
 
 # install packages
 WORKDIR /dominik-schwaiger.ch
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --shamefully-hoist
+COPY package.json pnpm-lock.yaml .npmrc ./
+RUN pnpm install
 
 # Add source files
 COPY . /dominik-schwaiger.ch
