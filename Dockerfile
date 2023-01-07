@@ -1,4 +1,3 @@
-
 FROM node:16
 # Configuration
 LABEL author="Dominik Schwaiger"
