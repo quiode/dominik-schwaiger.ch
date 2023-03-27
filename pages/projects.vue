@@ -40,10 +40,6 @@ const projects: {
       imageSrc: 'nowple.png',
       links: [
         {
-          icon: 'globe.svg',
-          url: 'https://nowple.ch/',
-        },
-        {
           icon: 'github.svg',
           url: 'https://github.com/quiode/nowple',
         },
