@@ -146,6 +146,18 @@ const projects: {
       ],
       text: t('dos'),
     },
+    {
+      imageSrc: 'eye.svg',
+      links: [{ icon: 'github.svg', url: 'https://github.com/quiode/compose-watcher' }],
+      tools: [{
+        icon: 'node.svg',
+        url: 'https://nodejs.org/en'
+      }, {
+        icon: 'typescript.svg',
+        url: 'https://www.typescriptlang.org/'
+      }],
+      text: t('watcher')
+    }
   ];
 </script>
 

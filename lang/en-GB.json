@@ -26,5 +26,6 @@
 	"copyright_text_2": "license.",
 	"source": " Source: SwissAnwalt, Translated with www.DeepL.com/Translator (free version)",
 	"404": "File not found",
-	"arp": "A GUI Programm written in Rust with the GTK that allows the user to upload/modify packages to/form the AUR."
+	"arp": "A GUI Programm written in Rust with the GTK that allows the user to upload/modify packages to/form the AUR.",
+	"watcher": "A Docker Image that watches a Git-Repository for changes via a Webhook or an Interval and which updates all docker-compose stacks inside this repository with the new changes."
 }
