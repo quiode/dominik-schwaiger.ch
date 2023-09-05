@@ -113,10 +113,6 @@ const projects: {
         }, {
           icon: 'github.svg',
           url: 'https://github.com/quiode/Website-Chris'
-        },
-        {
-          icon: 'globe.svg',
-          url: 'https://christoph-baertsch.ch/#/stills'
         }
       ],
       tools: [
