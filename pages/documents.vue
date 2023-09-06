@@ -28,14 +28,9 @@ const documents: {
   path: string;
 }[] = [
     {
-      name: t('cv'),
-      icon: 'bi-file-earmark-person',
-      path: 'cv.pdf',
-    },
-    {
       name: t('gpg'),
       icon: 'bi-fingerprint',
-      path: 'gpg.asc',
+      path: 'key.pgp',
     },
     {
       name: t('thesis'),

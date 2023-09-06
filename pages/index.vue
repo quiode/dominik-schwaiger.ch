@@ -2,10 +2,6 @@
 definePageMeta({
   alias: '/home',
 });
-
-const birthday = 1078873200000;
-const timeDiff = Math.abs(Date.now() - birthday);
-const age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365.25);
 </script>
 
 <template>
