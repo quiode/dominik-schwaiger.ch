@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+
+  <channel>
+    <title>Dominik's Projects</title>
+    <link>https://dominik-schwaiger.ch/projects</link>
+    <description>A Blog about my Projects</description>
+
+    <item>
+      <title>compose-watcher</title>
+      <link>https://github.com/quiode/compose-watcher</link>
+      <description>A Docker Image that watches a Git-Repository for changes via a Webhook or an Interval and which updates all docker-compose stacks inside this repository with the new changes.</description>
+    </item>
+  </channel>
+</rss> 
