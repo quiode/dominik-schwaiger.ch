@@ -2,9 +2,9 @@ name: Docker CI
 
 on:
   push:
-    branches: ['nuxtjs']
+    branches: ['main']
   pull_request:
-    branches: ['nuxtjs']
+    branches: ['main']
 
 jobs:
   build:
