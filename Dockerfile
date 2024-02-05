@@ -5,7 +5,7 @@ LABEL email="mail@dominik-schwaiger.ch"
 LABEL homepage="https://dominik-schwaiger.ch"
 LABEL description="My personal website"
 LABEL ch.dominik-schwaiger.image.authors="mail@dominik-schwaiger.ch"
-LABEL version="2.3.0"
+LABEL version="2.3.1"
 
 # install programms
 RUN npm install -g pnpm

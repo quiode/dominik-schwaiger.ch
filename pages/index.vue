@@ -16,6 +16,13 @@ definePageMeta({
         <h1>{{ $t('welcome') }}</h1>
         <br>
         {{ $t('about_me') }}
+
+                      <div class="webring">
+                        <webring-banner theme="dark" class="inner-webring">
+                          <p>Member of the <a href="https://polyring.ch">Polyring</a> webring</p>
+                        </webring-banner>
+
+                      </div>
       </div>
     </div>
   </div>
@@ -23,6 +30,18 @@ definePageMeta({
 
 <style lang="scss" scoped>
 @import '../assets/colors.scss';
+
+.webring {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 3%;
+
+  .inner-webring{
+    display: contents;
+  }
+}
 
 #root {
   display: flex;

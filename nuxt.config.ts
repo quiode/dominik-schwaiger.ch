@@ -4,8 +4,20 @@ export default defineNuxtConfig({
 		strict: true,
 		typeCheck: true,
 	},
+	vue: {
+		compilerOptions: {
+			isCustomElement: (tag) => ['webring-banner'].includes(tag)
+		}
+	},
 	app: {
-		head: { title: 'Dominik Schwaiger' },
+		head: {
+			title: 'Dominik Schwaiger', script: [
+				{
+					async: true,
+					src: "https://polyring.ch/embed.js",
+				}
+			]
+		},
 		pageTransition: { name: 'page', mode: 'out-in' },
 	},
 	css: [
