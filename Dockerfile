@@ -1,11 +1,11 @@
-FROM node:16
+FROM node:20
 # Configuration
 LABEL author="Dominik Schwaiger"
 LABEL email="mail@dominik-schwaiger.ch"
 LABEL homepage="https://dominik-schwaiger.ch"
 LABEL description="My personal website"
 LABEL ch.dominik-schwaiger.image.authors="mail@dominik-schwaiger.ch"
-LABEL version="2.2.7"
+LABEL version="2.3.0"
 
 # install programms
 RUN npm install -g pnpm
