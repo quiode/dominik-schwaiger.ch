@@ -29,11 +29,7 @@ export default defineNuxtConfig({
 					useCookie: true,
 					cookieKey: 'i18n_redirected',
 					redirectOn: 'root', // recommended
-				},
-				vueI18n: {
-					lecaly: false,
-					locale: 'en',
-				},
+				}
 			},
 		],
 	],
