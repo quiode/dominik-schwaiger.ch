@@ -1,4 +1,4 @@
-FROM node:16
+FROM node:20
 # Configuration
 LABEL author="Dominik Schwaiger"
 LABEL email="mail@dominik-schwaiger.ch"
