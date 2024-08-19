@@ -23,6 +23,10 @@ LABEL description="My personal website"
 LABEL ch.dominik-schwaiger.image.authors="mail@dominik-schwaiger.ch"
 LABEL version="2.3.1"
 
+ENV FILE_MOUNT=/dominik-schwaiger.ch/public/images/temp/
+ENV IMAGE_FILES=/dominik-schwaiger.ch/public/images/
+VOLUME /dominik-schwaiger.ch/public/images
+
 WORKDIR /dominik-schwaiger.ch
 COPY --from=0 /dominik-schwaiger.ch/.output/ /dominik-schwaiger.ch/
 

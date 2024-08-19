@@ -47,6 +47,7 @@ export default defineNuxtConfig({
 				}
 			},
 		],
+		['nuxt-file-storage', {mount: process.env.FILE_MOUNT}]
 	],
 
 	compatibilityDate: '2024-08-19',
