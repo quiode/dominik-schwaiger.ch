@@ -181,14 +181,14 @@ const projects: {
 }
 
 .inner-container {
+  width: 90%;
+  
+  // fly in from the left at the start
+  animation: flyInFromLeft 2s ease-in-out forwards;
+
   @media screen and (min-width: 764px) {
     margin-top: 4vh;
   }
-
-  width: 90%;
-
-  // fly in from the left at the start
-  animation: flyInFromLeft 2s ease-in-out forwards;
 }
 
 @media (max-width: 768px) {
@@ -197,6 +197,8 @@ const projects: {
   }
 
   .inner-container {
+    margin-top: 5em;
+
     &:first-child {
       margin-top: 0.5em;
     }
@@ -204,8 +206,6 @@ const projects: {
     &:last-child {
       margin-bottom: 1em;
     }
-
-    margin-top: 5em;
   }
 }
 </style>

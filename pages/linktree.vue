@@ -56,6 +56,12 @@ const links: {
   justify-content: center;
   font-size: 2em;
 
+  /* hover */
+  background: linear-gradient(to left, $background-color 50%, $secondary-color 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: background-position 0.5s ease;
+
   @media screen and (max-width: 768px) {
     margin-top: 35%;
     font-size: 1em !important;
@@ -64,12 +70,6 @@ const links: {
   @media screen and (max-width: 1400px) {
     font-size: 1.25em !important;
   }
-
-  /* hover */
-  background: linear-gradient(to left, $background-color 50%, $secondary-color 50%);
-  background-size: 200% 100%;
-  background-position: right bottom;
-  transition: background-position 0.5s ease;
 
   &:hover {
     background-position: left bottom;

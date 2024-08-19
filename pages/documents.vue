@@ -82,6 +82,8 @@ const documents: {
     border-style: solid;
 
     &:hover {
+      animation: hovering 0.5s infinite;
+
       @keyframes hovering {
         $rotation: 5deg;
 
@@ -97,11 +99,17 @@ const documents: {
           transform: rotate($rotation);
         }
       }
-
-      animation: hovering 0.5s infinite;
     }
 
     .icon {
+      font-size: 10em;
+      text-align: center;
+      background: $gradient-light-top-right;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradient 3s ease infinite;
+      background-size: 400% 400%;
+
       @keyframes gradient {
         0% {
           background-position: 0% 50%;
@@ -115,14 +123,6 @@ const documents: {
           background-position: 0% 50%;
         }
       }
-
-      font-size: 10em;
-      text-align: center;
-      background: $gradient-light-top-right;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: gradient 3s ease infinite;
-      background-size: 400% 400%;
     }
 
     .name {

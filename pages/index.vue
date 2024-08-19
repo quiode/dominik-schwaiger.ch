@@ -95,7 +95,6 @@ definePageMeta({
 
   @media screen and (max-width: 768px) {
     $width-new: initial;
-
     width: $width-new !important;
 
     &::before {
@@ -119,12 +118,6 @@ definePageMeta({
   }
 
   &::before {
-    @keyframes spin {
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
     // gradient border
     content: '';
     position: absolute;
@@ -137,6 +130,12 @@ definePageMeta({
     background: $gradient-light-top;
     z-index: calc($z-index - 1);
     animation: spin 4s linear infinite;
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
   }
 }
 
