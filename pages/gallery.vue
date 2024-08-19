@@ -11,7 +11,6 @@ $fetch<ImageFile[]>('/images/images.json').then(data => {
 });
 
 // FUNCTIONS
-const imageFullSizeURL = (image: ImageFile) => "/images/full_size/" + image.name + "." + image.format;
 const imageThumbnailURL = (image: ImageFile) => "/images/thumbnails/" + image.name + "." + image.format;
 
 function distributeElements<T>(inputArray: T[]): [T[], T[], T[]] {
@@ -39,14 +38,14 @@ function onSelectImage(image: ImageFile) {
 // change body style according to selected image value
 watch(selectedImage, value => {
   if (value != undefined) {
-    document.body.classList.add('slideshow');
+    document.body.style.overflow = 'hidden';
   } else {
-    document.body.classList.remove('slideshow');
+    document.body.style.overflow = '';
   }
 });
 
 onBeforeUnmount(() => {
-  document.body.classList.remove('slideshow');
+  document.body.style.overflow = '';
 });
 </script>
 
@@ -59,21 +58,9 @@ onBeforeUnmount(() => {
     </div>
   </div>
 
-  <ImageSlideShow v-if="selectedImage != undefined" :images="images" :index="selectedImage"
+  <ImageSlideShow v-if="selectedImage != undefined" :image="images[selectedImage]" @next="selectedImage = (selectedImage + 1) % images.length" @previous="selectedImage = selectedImage - 1 >= 0 ? selectedImage - 1 : images.length - 1"
     @close="selectedImage = undefined"></ImageSlideShow>
 </template>
-
-<style>
-body {
-  transition: opacity 250ms;
-}
-
-.slideshow {
-  opacity: 0.25;
-  pointer-events: none;
-  overflow: hidden;
-}
-</style>
 
 <style scoped lang="scss">
 @import '../assets/colors.scss';
@@ -82,6 +69,11 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+
+.slideshow {
+  pointer-events: none;
+  overflow: hidden;
 }
 
 .column {
