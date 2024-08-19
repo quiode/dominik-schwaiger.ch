@@ -7,22 +7,21 @@ definePageMeta({
 <template>
   <div id="root">
     <div id="container">
+      <h1>{{ $t('welcome') }}</h1>
+
       <div id="avatar-container">
         <div id="avatar">
           <img src="/avatar.jpg" />
         </div>
+
       </div>
-      <div id="text">
-        <h1>{{ $t('welcome') }}</h1>
-        <br>
+
+      <div>
         {{ $t('about_me') }}
+      </div>
 
-                      <div class="webring">
-                        <webring-banner theme="dark" class="inner-webring">
-                          <p>Member of the <a href="https://polyring.ch">Polyring</a> webring</p>
-                        </webring-banner>
-
-                      </div>
+      <div class="webring">
+        <webring-banner theme="dark"></webring-banner>
       </div>
     </div>
   </div>
@@ -31,22 +30,10 @@ definePageMeta({
 <style lang="scss" scoped>
 @import '../assets/colors.scss';
 
-.webring {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  padding: 3%;
-
-  .inner-webring{
-    display: contents;
-  }
-}
-
 #root {
+  position: relative;
   display: flex;
   justify-content: center;
-  position: relative;
   margin: 0;
   margin-top: 1.5%;
   padding: 0;
@@ -56,20 +43,37 @@ definePageMeta({
   }
 }
 
+.webring {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 3%;
+
+  webring-banner {
+    width: max-content;
+
+    @media screen and (max-width: 768px) {
+      width: 100%;  
+    }
+  }  
+}  
+
 #container {
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: 5%;
-  width: 75%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  row-gap: 0.75em;
+  width: 50%;
   position: relative;
   top: 2.5%;
+  font-size: 2.5em;
 
   @media screen and (max-width: 768px) {
-    grid-template-columns: auto !important;
-
     top: 1em !important;
-
     width: 80%;
+    font-size: large;
   }
 }
 
@@ -84,24 +88,9 @@ definePageMeta({
 
 #avatar {
   $border: 4px;
-  $z-index: 1;
-  $width: 300px;
+  $width: 200px;
   width: $width;
   aspect-ratio: 1/1;
-
-  @media screen and (min-width: 768px) {
-    transform: translateY(5em);
-  }
-
-  @media screen and (max-width: 768px) {
-    $width-new: initial;
-    width: $width-new !important;
-
-    &::before {
-      display: block;
-      width: 100% !important;
-    }
-  }
 
   img {
     position: relative;
@@ -109,7 +98,6 @@ definePageMeta({
     border-radius: 50%;
     width: 100%;
     height: 100%;
-    z-index: $z-index;
     transition: transform 1s ease;
 
     &:hover {
@@ -121,29 +109,21 @@ definePageMeta({
     // gradient border
     content: '';
     position: absolute;
-    top: -$border;
-    left: -$border;
+    display: block;
     padding: $border;
     width: $width;
     aspect-ratio: 1/1;
     border-radius: 50%;
     background: $gradient-light-top;
-    z-index: calc($z-index - 1);
+    z-index: -1;
     animation: spin 4s linear infinite;
+    transform: translate(-$border, -$border) rotate(0deg);
 
     @keyframes spin {
       100% {
-        transform: rotate(360deg);
+        transform: translate(-$border, -$border) rotate(360deg);
       }
     }
-  }
-}
-
-#text {
-  font-size: 2.5em;
-
-  @media screen and (max-width: 768px) {
-    font-size: large;
   }
 }
 </style>
