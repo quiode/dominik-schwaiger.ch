@@ -11,20 +11,19 @@ export default defineEventHandler(async (event) => {
     const fileName = uuidv4();
 
     // get metadata
-    const metadata = await sharp(binaryString)
-      .metadata();
-    // convert file to a jpg
-    await sharp(binaryString)
-      .jpeg({ quality: 100 })
-      .toFile(full_size + fileName + ".jpg");
+    // convert image
+    const data1 = await sharp(binaryString)
+      .resize({ width: 1920, withoutEnlargement: true })
+      .webp({ quality: 100 })
+      .toFile(full_size + fileName + ".webp");
     // create a thumbnail
-    await sharp(binaryString)
+    const data2 = await sharp(binaryString)
       .resize({ width: 1280, withoutEnlargement: true })
-      .jpeg({ quality: 60 })
-      .toFile(thumbnails + fileName + ".jpg");
+      .webp({ quality: 60 })
+      .toFile(thumbnails + fileName + ".webp");
     // add file to file index
     const json: ImageFile[] = JSON.parse(await readFile(json_file, "utf8"));
-    const newJSON = [...json, { name: fileName, width: metadata.width, height: metadata.height, size: metadata.size }];
+    const newJSON: ImageFile[] = [...json, { name: fileName, width: data1.width, height: data1.height, thumbnail_height: data2.height, thumbnail_width: data2.width, format: 'webp' }];
     await writeFile(json_file, JSON.stringify(newJSON), 'utf-8');
   }
 });
@@ -38,5 +37,7 @@ export interface ImageFile {
   name: string;
   width: number | undefined;
   height: number | undefined;
-  size: number | undefined;
+  thumbnail_width: number | undefined;
+  thumbnail_height: number | undefined;
+  format: 'webp' | 'jpg'
 };

@@ -1,3 +1,7 @@
-full_size/
-temp/
-thumbnails/
+full_size/*
+temp/*
+thumbnails/*
+
+!full_size/.gitkeep
+!thumbnails/.gitkeep
+!temp/.gitkeep

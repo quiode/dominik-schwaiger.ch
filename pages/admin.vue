@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const { handleFileInput, files } = useFileStorage()
 
-let password = ref('admin');
+let password = ref('');
 
 const submit = async () => {
   const response = await $fetch('/api/images', {
