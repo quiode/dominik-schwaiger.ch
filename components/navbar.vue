@@ -30,6 +30,18 @@ const switchLocalePath = useSwitchLocalePath();
       <Vr class="vr"></Vr>
 
       <div class="item">
+        <NuxtLink :to="localePath('/gallery')">{{ $t('gallery') }}</NuxtLink>
+      </div>
+
+      <Vr class="vr"></Vr>
+
+      <div class="item">
+        <NuxtLink :to="localePath('/cv')">{{ $t('cv') }}</NuxtLink>
+      </div>
+
+      <Vr class="vr"></Vr>
+
+      <div class="item">
         <NuxtLink :to="localePath('/gpg')">{{ $t('gpg') }}</NuxtLink>
       </div>
 
