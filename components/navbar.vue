@@ -107,7 +107,7 @@ nav {
     justify-content: space-around;
     flex-wrap: wrap;
 
-    // everythin else
+    // everything else
     position: relative;
     left: 50%;
     transform: translateX(-50%);
