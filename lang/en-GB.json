@@ -1,20 +1,9 @@
 {
 	"welcome": "Welcome to my website!",
-	"about_me": "Hi, I'm Dominik and a Informatics Bachelor Student at the ETH Zurich",
+	"about_me": "Hi, I'm Dominik and a Informatics Bachelor Student at ETH Zurich",
 	"home": "Home",
-	"projects": "Projects",
 	"linktree": "Linktree",
-	"documents": "Documents",
 	"impressum": "Impressum",
-	"nowple": "My final project in my informatics Course during the Kantonsschule Wattwil. This website is a simple dating website with a chat feature. The main selling point is the multitude of matching options.",
-	"troytd": " A tower defence game. Based on the trojan war. Build with libGDX.",
-	"dos": "Simple configurations and scripts for various linux distributions.",
-	"heebphotography": "A website and desktop application for a young photographer. The website is mainly used to display his work and the desktop application is used for uploading the images and giving them a watermark.",
-	"christophbaertsch": "A website for a young multimedia creator. Mainly used for uploading his work in photography, music and film production.",
-	"cv": "Curriculum Vitae",
-	"gpg": "GPG Key",
-	"thesis": "Final Thesis",
-	"matura": "Swiss Maturity Diploma",
 	"contact_adress": "Contact address",
 	"switzerland": "Switzerland",
 	"disclaimer": "Disclaimer",
@@ -25,7 +14,5 @@
 	"copyright_text_1": "This website is published under the",
 	"copyright_text_2": "license.",
 	"source": " Source: SwissAnwalt, Translated with www.DeepL.com/Translator (free version)",
-	"404": "File not found",
-	"arp": "A GUI Programm written in Rust with the GTK that allows the user to upload/modify packages to/form the AUR.",
-	"watcher": "A Docker Image that watches a Git-Repository for changes via a Webhook or an Interval and which updates all docker-compose stacks inside this repository with the new changes."
+	"404": "File not found"
 }
