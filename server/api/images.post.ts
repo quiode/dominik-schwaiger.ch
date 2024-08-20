@@ -13,12 +13,11 @@ export default defineEventHandler(async (event) => {
     // get metadata
     // convert image
     const data1 = await sharp(binaryString)
-      .resize({ width: 1920, withoutEnlargement: true })
-      .webp({ quality: 100 })
+      .webp({ quality: 90 })
       .toFile(full_size + fileName + ".webp");
     // create a thumbnail
     const data2 = await sharp(binaryString)
-      .resize({ width: 1280, withoutEnlargement: true })
+      .resize({ width: 1920, withoutEnlargement: true })
       .webp({ quality: 60 })
       .toFile(thumbnails + fileName + ".webp");
     // add file to file index

@@ -26,12 +26,27 @@ function onKeyDown(event: KeyboardEvent) {
 
 
 const imageFullSizeURL = (image: ImageFile) => "/images/full_size/" + image.name + "." + image.format;
+
+let hideNav = ref(true);
 </script>
 
 <template>
   <div @click="emit('close')" class="container">
     <div class="inner-container">
-      <img @click.stop="" :src="imageFullSizeURL(image)">
+      <div @mouseenter="hideNav = false" class="nav-button" :class="{ hidden: hideNav }">
+        <div @click.stop="emit('previous')" class="nav-circle">
+          &#8592;
+        </div>
+      </div>
+
+      <img @mouseenter="hideNav = true" @mouseleave="hideNav = false" @click.stop="" :src="imageFullSizeURL(image)"
+        loading="eager">
+
+      <div @mouseenter="hideNav = false" class="nav-button" :class="{ hidden: hideNav }">
+        <div @click.stop="emit('next')" class="nav-circle">
+          &#8594;
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -67,17 +82,59 @@ const imageFullSizeURL = (image: ImageFile) => "/images/full_size/" + image.name
   @media screen and (max-width: 768px) {
     height: 100%;
     width: 100%;
+
+    flex-direction: column;
   }
 }
 
 img {
-  max-width: 95%;
+  max-width: min(95%, calc(100% - 400px));
   max-height: 95%;
   cursor: default;
 
   @media screen and (max-width: 768px) {
-    max-height: 100%;
-    max-width: 100%;
+    max-height: calc(100% - 200px);
+    max-width: 95%;
+  }
+}
+
+.nav-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: min-content;
+  margin: 0 100px;
+  color: white;
+  font-size: 5em;
+  text-align: center;
+  user-select: none;
+
+  transition: opacity 0.25s;
+}
+
+.hidden {
+  opacity: 0;
+
+  @media screen and (hover: none) {
+    opacity: 1;
+  }
+}
+
+.nav-circle {
+  background-color: rgb(62, 62, 62);
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+
+  transition: all 0.5s ease;
+  &:hover {
+    background-color: rgb(134, 134, 134);
+  }
+
+  @media screen and (max-width: 768px) {
+    transform: rotate(90deg);
   }
 }
 </style>
