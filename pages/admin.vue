@@ -35,6 +35,17 @@ async function submit() {
           }
         })
       )
+      .catch(_ => // retry twice
+        $fetch('/api/images', {
+          method: 'POST',
+          body: {
+            files: chunk
+          },
+          params: {
+            password: password.value
+          }
+        })
+      )
       .catch((error) => {
         alert(error);
         console.log(chunk)
