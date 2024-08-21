@@ -4,11 +4,13 @@ export default defineNuxtConfig({
 		strict: true,
 		typeCheck: true,
 	},
+
 	vue: {
 		compilerOptions: {
 			isCustomElement: (tag) => ['webring-banner'].includes(tag)
 		}
 	},
+
 	app: {
 		head: {
 			title: 'Dominik Schwaiger', script: [
@@ -18,13 +20,14 @@ export default defineNuxtConfig({
 				}
 			]
 		},
-		pageTransition: { name: 'page', mode: 'out-in' },
 	},
+
 	css: [
 		'~/assets/colors.scss',
 		'~/assets/global.scss',
 		'bootstrap-icons/font/bootstrap-icons.scss',
 	],
+
 	modules: [
 		[
 			'@nuxtjs/i18n',
@@ -44,5 +47,8 @@ export default defineNuxtConfig({
 				}
 			},
 		],
+		['nuxt-file-storage', { mount: process.env.FILE_MOUNT }]
 	],
+
+	compatibilityDate: '2024-08-19',
 });

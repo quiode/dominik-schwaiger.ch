@@ -31,12 +31,11 @@
 
 <style lang="scss" scoped>
 #container {
+  width: 50%;
+  text-align: center;
+
   @media screen and (max-width: 768px) {
     width: 90%;
   }
-
-  width: 50%;
-
-  text-align: center;
 }
 </style>

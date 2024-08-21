@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import Vr1 from './vr.vue';
 const route = useRoute();
 const localePath = useLocalePath();
 const switchLocalePath = useSwitchLocalePath();
@@ -25,19 +24,25 @@ const switchLocalePath = useSwitchLocalePath();
       <Vr class="vr"></Vr>
 
       <div class="item">
-        <NuxtLink :to="localePath('/projects')">{{ $t('projects') }}</NuxtLink>
-      </div>
-
-      <Vr class="vr"></Vr>
-
-      <div class="item">
         <NuxtLink :to="localePath('/linktree')">{{ $t('linktree') }}</NuxtLink>
       </div>
 
       <Vr class="vr"></Vr>
 
       <div class="item">
-        <NuxtLink :to="localePath('/documents')">{{ $t('documents') }}</NuxtLink>
+        <NuxtLink :to="localePath('/gallery')">{{ $t('gallery') }}</NuxtLink>
+      </div>
+
+      <Vr class="vr"></Vr>
+
+      <div class="item">
+        <NuxtLink :to="localePath('/cv')">{{ $t('cv') }}</NuxtLink>
+      </div>
+
+      <Vr class="vr"></Vr>
+
+      <div class="item">
+        <NuxtLink :to="localePath('/gpg')">{{ $t('gpg') }}</NuxtLink>
       </div>
 
       <Vr class="vr"></Vr>
@@ -107,7 +112,7 @@ nav {
     justify-content: space-around;
     flex-wrap: wrap;
 
-    // everythin else
+    // everything else
     position: relative;
     left: 50%;
     transform: translateX(-50%);

@@ -8,3 +8,5 @@ services:
         restart: always
         labels:
             - 'com.centurylinklabs.watchtower.enable=true'
+        environment:
+            - SCHWAIGER_ADMIN_PASSWORD=admin
