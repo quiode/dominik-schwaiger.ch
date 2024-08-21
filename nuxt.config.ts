@@ -1,5 +1,3 @@
-import { fileURLToPath } from 'url';
-
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
 	typescript: {
@@ -10,19 +8,6 @@ export default defineNuxtConfig({
 	vue: {
 		compilerOptions: {
 			isCustomElement: (tag) => ['webring-banner'].includes(tag)
-		}
-	},
-
-	vite: {
-		build: {
-			rollupOptions: {
-				input: {
-					"pdf.worker": fileURLToPath(new URL("./node_modules/pdfjs-dist/build/pdf.worker.mjs", import.meta.url)),
-				}
-			},
-		},
-		optimizeDeps: {
-			exclude: ['pdf.worker.mjs']
 		}
 	},
 
