@@ -9,4 +9,4 @@ services:
         labels:
             - 'com.centurylinklabs.watchtower.enable=true'
         environment:
-            - ADMIN_PASSWORD=admin
+            - SCHWAIGER_ADMIN_PASSWORD=admin

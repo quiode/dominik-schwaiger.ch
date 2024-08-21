@@ -1,7 +1,7 @@
 // Checks if request has correct password value
 
 function validPassword(input: string) {
-  const expected_password = process.env.ADMIN_PASSWORD || 'admin';
+  const expected_password = process.env.SCHWAIGER_ADMIN_PASSWORD || 'admin';
 
   return input == expected_password;
 }
