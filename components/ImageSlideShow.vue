@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+const isChrome = !!(window as any).chrome;
+
 defineProps<{
   image: ImageFile,
 }>();
@@ -30,7 +32,7 @@ let hideNav = ref(true);
 
 <template>
   <div @click="emit('close')" class="container">
-    <div class="inner-container">
+    <div class="inner-container" :class="{ chrome: isChrome }">
       <div @mouseenter="hideNav = false" class="nav-button" :class="{ hidden: hideNav }">
         <div @click.stop="emit('previous')" class="nav-circle">
           &#8592;
@@ -83,6 +85,10 @@ let hideNav = ref(true);
 
     flex-direction: column;
   }
+
+  &.chrome {
+    line-height: 75px;
+  }
 }
 
 img {
@@ -127,6 +133,7 @@ img {
   cursor: pointer;
 
   transition: all 0.5s ease;
+
   &:hover {
     background-color: rgb(134, 134, 134);
   }
