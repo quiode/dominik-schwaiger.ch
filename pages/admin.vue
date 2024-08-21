@@ -1,10 +1,18 @@
 <script lang="ts" setup>
+import { validate } from 'uuid';
+import type { ImageDeleteBody } from '~/server/api/images.delete';
+
 const { handleFileInput, files } = useFileStorage()
 
 let password = ref('');
+let deleteId = ref('');
+let validId = ref(false);
 
-const submit = async () => {
-  const response = await $fetch('/api/images', {
+// check if id is a valid uuid
+watch(deleteId, newId => validId.value = validate(newId));
+
+async function submit() {
+  await $fetch('/api/images', {
     method: 'POST',
     body: {
       files: files.value
@@ -12,17 +20,42 @@ const submit = async () => {
     params: {
       password: password.value
     }
-  }).catch(error => alert(error))
-    .then(() => { navigateTo('/gallery'); });
+  }).then(
+    () => { navigateTo('/gallery'); },
+    (error) => { alert(error); }
+  );
+}
+
+async function deleteImage(id: string) {
+  await $fetch('/api/images', {
+    method: 'DELETE',
+    body: {
+      id: id
+    } satisfies ImageDeleteBody,
+    params: {
+      password: password.value
+    }
+  }).then(
+    () => { navigateTo('/gallery'); },
+    (error) => { alert(error); }
+  );
 }
 </script>
 
 <template>
   <Login v-if="password == ''" @authenticated="password = $event.password"></Login>
-  <div v-else class="container">
-    <div class="inner-container">
-      <input type="file" multiple @input="handleFileInput" />
-      <button @click="submit">submit</button>
+  <div v-else>
+    <div class="container">
+      <div class="inner-container">
+        <input type="file" multiple @input="handleFileInput" />
+        <button @click="submit">submit</button>
+      </div>
+    </div>
+    <div class="container">
+      <div class="inner-container">
+        <input placeholder="id-to-delete" class="text-input" v-model="deleteId" type="text" />
+        <button @click="deleteImage(deleteId)" :disabled="!validId">submit</button>
+      </div>
     </div>
   </div>
 </template>
@@ -31,9 +64,14 @@ const submit = async () => {
 .container {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .inner-container {
-  margin: 10em;
+  margin: 5em;
+}
+
+.text-input {
+  margin-right: 5em;
 }
 </style>

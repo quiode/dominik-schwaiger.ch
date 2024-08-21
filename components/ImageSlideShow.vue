@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import type { ImageFile } from '../server/api/images.post';
-
 defineProps<{
   image: ImageFile,
 }>();

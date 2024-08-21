@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import type { ImageFile } from '~/server/api/images.post';
-
 let selectedImage = ref(undefined as undefined | number);
 let columns = ref([[], [], []] as [ImageFile[], ImageFile[], ImageFile[]]);
 let images = ref([] as ImageFile[]);
