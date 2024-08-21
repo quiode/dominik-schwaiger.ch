@@ -3,6 +3,8 @@
 function validPassword(input: string) {
   const expected_password = process.env.SCHWAIGER_ADMIN_PASSWORD || 'admin';
 
+  console.log(process.env);
+
   return input == expected_password;
 }
 
