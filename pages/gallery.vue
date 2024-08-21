@@ -91,10 +91,6 @@ img {
 
   transition: box-shadow 0.5s ease-in-out;
 
-  @media screen and (max-width: 1050px) {
-    max-width: 45vw;
-  }
-
   @media screen and (max-width: 768px) {
     max-width: 90vw;
   }
