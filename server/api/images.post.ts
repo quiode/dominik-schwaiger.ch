@@ -1,5 +1,5 @@
 import sharp from 'sharp';
-import { writeFile, readFile, rm } from 'fs/promises';
+import { writeFile, readFile, access, mkdir } from 'fs/promises';
 import { v4 as uuidv4 } from 'uuid';
 
 export default defineEventHandler(async (event) => {
@@ -26,6 +26,23 @@ export default defineEventHandler(async (event) => {
     await writeFile(json_file, JSON.stringify(newJSON), 'utf-8');
   }
 });
+
+// Creates the files/folders if they do not already exist
+async function createFiles() {
+  if (!(await access_wrapper(json_file))) {
+    await writeFile(json_file, JSON.stringify([]), 'utf-8');
+  }
+  if (!(await access_wrapper(full_size))) {
+    await mkdir(full_size, { recursive: true });
+  }
+  if (!(await access_wrapper(thumbnails))) {
+    await mkdir(thumbnails, { recursive: true });
+  }
+}
+
+function access_wrapper(file: string) {
+  return access(file).then(() => true, () => false);
+}
 
 const temp_files = process.env.FILE_MOUNT;
 const thumbnails = process.env.IMAGE_FILES + "thumbnails/";
