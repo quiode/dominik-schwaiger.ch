@@ -4,10 +4,11 @@ import { v4 as uuidv4 } from 'uuid';
 
 export default defineEventHandler(async (event) => {
   const { files } = await readBody(event);
+  // create files if missing
+  await createFiles();
 
-  let fileNames: string[] = [];
   for (const file of files) {
-    const { binaryString, ext } = parseDataUrl(file.content);
+    const { binaryString } = parseDataUrl(file.content);
     const fileName = uuidv4();
 
     // get metadata
@@ -44,7 +45,6 @@ function access_wrapper(file: string) {
   return access(file).then(() => true, () => false);
 }
 
-const temp_files = process.env.FILE_MOUNT;
 const thumbnails = process.env.IMAGE_FILES + "thumbnails/";
 const full_size = process.env.IMAGE_FILES + "full_size/";
 const json_file = process.env.IMAGE_FILES + "images.json";
