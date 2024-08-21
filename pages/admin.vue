@@ -12,18 +12,19 @@ let validId = ref(false);
 watch(deleteId, newId => validId.value = validate(newId));
 
 async function submit() {
-  await $fetch('/api/images', {
-    method: 'POST',
-    body: {
-      files: files.value
-    },
-    params: {
-      password: password.value
-    }
-  }).then(
-    () => { navigateTo('/gallery'); },
-    (error) => { alert(error); }
-  );
+  const chunks = chunkArray(files.value, 5);
+
+  for (let chunk of chunks) {
+    await $fetch('/api/images', {
+      method: 'POST',
+      body: {
+        files: chunk
+      },
+      params: {
+        password: password.value
+      }
+    }).catch((error) => { alert(error); });
+  }
 }
 
 async function deleteImage(id: string) {
@@ -35,10 +36,7 @@ async function deleteImage(id: string) {
     params: {
       password: password.value
     }
-  }).then(
-    () => { navigateTo('/gallery'); },
-    (error) => { alert(error); }
-  );
+  }).catch((error) => { alert(error); });
 }
 </script>
 
