@@ -25,6 +25,8 @@ async function submit() {
       }
     }).catch((error) => { alert(error); });
   }
+
+  alert('done!');
 }
 
 async function deleteImage(id: string) {
@@ -37,6 +39,8 @@ async function deleteImage(id: string) {
       password: password.value
     }
   }).catch((error) => { alert(error); });
+
+  alert('done');
 }
 </script>
 
