@@ -12,7 +12,7 @@ let validId = ref(false);
 watch(deleteId, newId => validId.value = validate(newId));
 
 async function submit() {
-  const chunks = chunkArray(files.value, 5);
+  const chunks = chunkArray(files.value, 2);
 
   for (let chunk of chunks) {
     await $fetch('/api/images', {
