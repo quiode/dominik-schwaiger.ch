@@ -48,7 +48,7 @@ async function deleteImage(id: string) {
     <div class="container">
       <div class="inner-container">
         <input type="file" multiple @input="handleFileInput" />
-        <button @click="submit">submit</button>
+        <button :disabled="files.length == 0" @click="submit">submit</button>
       </div>
     </div>
     <div class="container">
