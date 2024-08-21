@@ -35,7 +35,10 @@ async function submit() {
           }
         })
       )
-      .catch((error) => { alert(error); });
+      .catch((error) => {
+        alert(error);
+        console.log(chunk)
+      });
   }
 
   alert('done!');
