@@ -23,7 +23,19 @@ async function submit() {
       params: {
         password: password.value
       }
-    }).catch((error) => { alert(error); });
+    })
+      .catch(_ => // retry once
+        $fetch('/api/images', {
+          method: 'POST',
+          body: {
+            files: chunk
+          },
+          params: {
+            password: password.value
+          }
+        })
+      )
+      .catch((error) => { alert(error); });
   }
 
   alert('done!');
