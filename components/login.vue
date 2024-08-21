@@ -10,15 +10,15 @@ const passwordSent = () => {
   let finalPassword = password.value;
 
   $fetch('/api/auth', { params: { password: finalPassword } })
-    .catch(() => wrong.value = true)
-    .then(() => emits('authenticated', { password: finalPassword }));
+    .then(
+      () => emits('authenticated', { password: finalPassword }), () => { wrong.value = true; password.value = '' });
 };
 </script>
 
 <template>
   <div class="container">
     <h1>{{ $t('password') }}</h1>
-    <input :class="{error: wrong}" v-model="password" type="password" placeholder="admin">
+    <input :class="{ error: wrong }" v-model="password" type="password" placeholder="admin">
     <button @click="passwordSent" type="button">{{ $t('submit') }}</button>
   </div>
 </template>
