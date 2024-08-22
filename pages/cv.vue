@@ -31,10 +31,7 @@ const renderPages = () => {
   if (pdf) {
     for (let i = 1; i <= pages.value; i++) {
       pdf.getPage(i).then(async page => {
-        const desiredWidth = window.screen.width <= 768 ? window.screen.width : Math.round(window.screen.width * 0.8);
-        let viewport = page.getViewport({ scale: 1, });
-        const scale = desiredWidth / viewport.width;
-        viewport = page.getViewport({ scale: scale, });
+        const viewport = page.getViewport({ scale: 6 });
 
         // Prepare canvas using PDF page dimensions
         const canvas = document.getElementById('canvas-' + i) as HTMLCanvasElement;
