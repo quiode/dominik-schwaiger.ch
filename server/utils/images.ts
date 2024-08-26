@@ -15,10 +15,12 @@ export async function uploadImage(binaryString: Buffer) {
     // get metadata
     // convert image
     const data1 = await sharp(binaryString)
+      .keepMetadata()
       .webp({ quality: 90 })
       .toFile(full_size + fileName + ".webp");
     // create a thumbnail
     const data2 = await sharp(binaryString)
+      .keepMetadata()
       .resize({ width: 1920, withoutEnlargement: true })
       .webp({ quality: 60 })
       .toFile(thumbnails + fileName + ".webp");
