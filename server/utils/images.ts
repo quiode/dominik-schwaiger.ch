@@ -20,7 +20,6 @@ export async function uploadImage(binaryString: Buffer) {
       .toFile(full_size + fileName + ".webp");
     // create a thumbnail
     const data2 = await sharp(binaryString)
-      .keepMetadata()
       .resize({ width: 1920, withoutEnlargement: true })
       .webp({ quality: 60 })
       .toFile(thumbnails + fileName + ".webp");
