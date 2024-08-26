@@ -3,10 +3,12 @@ let selectedImage = ref(undefined as undefined | number);
 let columns = ref([[], [], []] as [ImageFile[], ImageFile[], ImageFile[]]);
 let images = ref([] as ImageFile[]);
 
-$fetch<ImageFile[]>('/images/images.json').then(data => {
-  columns.value = distributeElements(data);
-  images.value = data;
-});
+$fetch<ImageFile[]>('/images/images.json')
+  .then(data => data.reverse())
+  .then(data => {
+    columns.value = distributeElements(data);
+    images.value = data;
+  });
 
 // FUNCTIONS
 const imageThumbnailURL = (image: ImageFile) => "/images/thumbnails/" + image.name + "." + image.format;
@@ -56,7 +58,9 @@ onBeforeUnmount(() => {
     </div>
   </div>
 
-  <ImageSlideShow v-if="selectedImage != undefined" :image="images[selectedImage]" @next="selectedImage = (selectedImage + 1) % images.length" @previous="selectedImage = selectedImage - 1 >= 0 ? selectedImage - 1 : images.length - 1"
+  <ImageSlideShow v-if="selectedImage != undefined" :image="images[selectedImage]"
+    @next="selectedImage = (selectedImage + 1) % images.length"
+    @previous="selectedImage = selectedImage - 1 >= 0 ? selectedImage - 1 : images.length - 1"
     @close="selectedImage = undefined"></ImageSlideShow>
 </template>
 
