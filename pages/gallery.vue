@@ -10,31 +10,11 @@ $fetch<ImageFile[]>('/images/images.json')
     images.value = data;
   });
 
-// FUNCTIONS
-const imageThumbnailURL = (image: ImageFile) => "/images/thumbnails/" + image.name + "." + image.format;
-
-function distributeElements<T>(inputArray: T[]): [T[], T[], T[]] {
-  const array1: T[] = [];
-  const array2: T[] = [];
-  const array3: T[] = [];
-
-  inputArray.forEach((element, index) => {
-    if (index % 3 === 0) {
-      array1.push(element);
-    } else if (index % 3 === 1) {
-      array2.push(element);
-    } else {
-      array3.push(element);
-    }
-  });
-
-  return [array1, array2, array3];
-}
-
 function onSelectImage(image: ImageFile) {
   const index = images.value.indexOf(image);
   selectedImage.value = index;
 }
+
 // change body style according to selected image value
 watch(selectedImage, value => {
   if (value != undefined) {
