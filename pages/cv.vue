@@ -4,10 +4,11 @@ import * as pdfjsLib from 'pdfjs-dist';
 let pages = ref(0);
 let pdf = null as pdfjsLib.PDFDocumentProxy | null;
 let renders = [] as (Promise<any> | null)[];
+const pdfURL = window.location.origin + '/CV.pdf';
 
 if (import.meta.client) {
   pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.mjs`
-  const pdfLoadingTask = pdfjsLib.getDocument(window.location.origin + '/CV.pdf');
+  const pdfLoadingTask = pdfjsLib.getDocument(pdfURL);
 
   pdf = await pdfLoadingTask.promise;
   pages.value = pdf.numPages;
@@ -56,9 +57,9 @@ const renderPages = () => {
 
 <template>
   <div class="container">
-    <div class="inner-container">
+    <a :href="pdfURL" download="Lebenslauf von Dominik Schwaiger" class="inner-container">
       <canvas v-for="i in pages" :id="'canvas-' + i"></canvas>
-    </div>
+    </a>
   </div>
 </template>
 
