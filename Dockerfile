@@ -21,7 +21,7 @@ LABEL email="mail@dominik-schwaiger.ch"
 LABEL homepage="https://dominik-schwaiger.ch"
 LABEL description="My personal website"
 LABEL ch.dominik-schwaiger.image.authors="mail@dominik-schwaiger.ch"
-LABEL version="3.0.10"
+LABEL version="3.0.11"
 
 ENV FILE_MOUNT=/dominik-schwaiger.ch/images/temp/
 ENV IMAGE_FILES=/dominik-schwaiger.ch/images/
