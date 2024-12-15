@@ -25,6 +25,7 @@ LABEL version="3.1.1"
 
 ENV FILE_MOUNT=/dominik-schwaiger.ch/images/temp/
 ENV IMAGE_FILES=/dominik-schwaiger.ch/images/
+ENV SCHWAIGER_ADMIN_PASSWORD=admin
 VOLUME /dominik-schwaiger.ch/images
 
 WORKDIR /dominik-schwaiger.ch
