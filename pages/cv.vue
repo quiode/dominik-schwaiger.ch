@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { PDFDocumentProxy } from 'pdfjs-dist';
+import { render } from 'vue';
 
 let pdf = null as PDFDocumentProxy | null;
 const pages = ref(0);
@@ -27,14 +28,12 @@ const loadPDF = async () => {
   }
 };
 
-loadPDF();
-
 watch(pdfURL, async () => {
   await loadPDF();
 });
 
-onMounted(() => {
-  renderPages();
+onMounted(async () => {
+  await loadPDF();
 
   window.addEventListener('resize', renderPages);
 });
@@ -72,7 +71,7 @@ const renderPages = () => {
 
 <template>
   <div class="container">
-    <a :href="pdfURL" download="Lebenslauf von Dominik Schwaiger" class="inner-container">
+    <a :href="pdfURL" :download="$t('cv_file')" class=" inner-container">
       <canvas v-for="i in pages" :id="'canvas-' + i"></canvas>
     </a>
   </div>
