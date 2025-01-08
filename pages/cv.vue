@@ -4,22 +4,34 @@ import type { PDFDocumentProxy } from 'pdfjs-dist';
 let pdf = null as PDFDocumentProxy | null;
 const pages = ref(0);
 const renders = [] as (Promise<any> | null)[];
-const pdfURL = '/CV.pdf';
+const i18n = useI18n();
 
-if (import.meta.client) {
-  // dynamically import the package
-  const pdfjsLib = await import('pdfjs-dist');
+const pdfURL = computed(() => "/CV-" + i18n.locale.value + ".pdf");
 
-  pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.mjs`
-  const pdfLoadingTask = pdfjsLib.getDocument(window.location.origin + pdfURL);
+const loadPDF = async () => {
+  if (import.meta.client) {
+    // dynamically import the package
+    const pdfjsLib = await import('pdfjs-dist');
 
-  pdf = await pdfLoadingTask.promise;
-  pages.value = pdf.numPages;
+    pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.mjs`
+    const pdfLoadingTask = pdfjsLib.getDocument(window.location.origin + pdfURL.value);
 
-  for (let index = 0; index <= pages.value; index++) {
-    renders.push(null);
+    pdf = await pdfLoadingTask.promise;
+    pages.value = pdf.numPages;
+
+    for (let index = 0; index <= pages.value; index++) {
+      renders.push(null);
+    }
+
+    renderPages();
   }
-}
+};
+
+loadPDF();
+
+watch(pdfURL, async () => {
+  await loadPDF();
+});
 
 onMounted(() => {
   renderPages();
