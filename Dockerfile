@@ -15,14 +15,6 @@ RUN pnpm run build
 # second build stage for smaller docker image
 FROM node:20
 
-# Configuration
-LABEL author="Dominik Schwaiger"
-LABEL email="mail@dominik-schwaiger.ch"
-LABEL homepage="https://dominik-schwaiger.ch"
-LABEL description="My personal website"
-LABEL ch.dominik-schwaiger.image.authors="mail@dominik-schwaiger.ch"
-LABEL version="3.1.1"
-
 ENV FILE_MOUNT=/dominik-schwaiger.ch/images/temp/
 ENV IMAGE_FILES=/dominik-schwaiger.ch/images/
 ENV SCHWAIGER_ADMIN_PASSWORD=admin
