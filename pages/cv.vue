@@ -9,6 +9,32 @@ const i18n = useI18n();
 
 const pdfURL = computed(() => "/CV-" + i18n.locale.value + ".pdf");
 
+const renderPages = () => {
+  if (pdf) {
+    for (let i = 1; i <= pages.value; i++) {
+      pdf.getPage(i).then(async page => {
+        const viewport = page.getViewport({ scale: 6 });
+
+        // Prepare canvas using PDF page dimensions
+        const canvas = document.getElementById('canvas-' + i) as HTMLCanvasElement;
+        const context = canvas.getContext('2d')!;
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+
+        const renderContext = {
+          canvasContext: context,
+          viewport: viewport
+        };
+
+        if (renders[i]) {
+          await renders[i];
+        }
+        page.render(renderContext);
+      });
+    }
+  }
+};
+
 const loadPDF = async () => {
   if (import.meta.client) {
     // dynamically import the package
@@ -35,38 +61,13 @@ watch(pdfURL, async () => {
 onMounted(async () => {
   await loadPDF();
 
-  window.addEventListener('resize', renderPages);
+  window.addEventListener('resize', loadPDF);
 });
 
 onUnmounted(() => {
-  window.removeEventListener('resize', renderPages);
+  window.removeEventListener('resize', loadPDF);
 });
 
-const renderPages = () => {
-  if (pdf) {
-    for (let i = 1; i <= pages.value; i++) {
-      pdf.getPage(i).then(async page => {
-        const viewport = page.getViewport({ scale: 6 });
-
-        // Prepare canvas using PDF page dimensions
-        const canvas = document.getElementById('canvas-' + i) as HTMLCanvasElement;
-        const context = canvas.getContext('2d')!;
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
-
-        const renderContext = {
-          canvasContext: context,
-          viewport: viewport
-        };
-
-        if (renders[i]) {
-          await renders[i];
-        }
-        page.render(renderContext);
-      });
-    }
-  }
-};
 </script>
 
 <template>
