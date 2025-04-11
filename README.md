@@ -1,4 +1,8 @@
-# Nuxt 3 Minimal Starter
+# dominik-schwaiger.ch
+
+This repository contains the code for my personal website: https://dominik-schwaiger.ch.
+
+## Development
 
 Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
 
@@ -7,13 +11,6 @@ Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
 Make sure to install the dependencies:
 
 ```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
 pnpm install --shamefully-hoist
 ```
 
@@ -22,7 +19,7 @@ pnpm install --shamefully-hoist
 Start the development server on <http://localhost:3000>
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 ## Production
@@ -30,13 +27,13 @@ npm run dev
 Build the application for production:
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 Locally preview production build:
 
 ```bash
-npm run preview
+pnpm run preview
 ```
 
 Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment) for more information.
