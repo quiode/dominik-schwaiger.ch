@@ -3,7 +3,7 @@ let selectedImage = ref(undefined as undefined | number);
 let columns = ref([[], [], []] as [ImageFile[], ImageFile[], ImageFile[]]);
 let images = ref([] as ImageFile[]);
 
-$fetch<ImageFile[]>('/images/images.json')
+$fetch<ImageFile[]>(imageJsonPath())
   .then(data => data.reverse())
   .then(data => {
     columns.value = distributeElements(data);
@@ -32,8 +32,8 @@ onBeforeUnmount(() => {
 <template>
   <div class="gallery" :class="{ slideshow: selectedImage != undefined }">
     <div v-for="column in columns" class="column">
-      <div v-for="image in column" class="image" @click="onSelectImage(image)">
-        <img :src="imageThumbnailURL(image)" loading="lazy" />
+      <div v-for="image in column" class="image-container" @click="onSelectImage(image)">
+        <NuxtImg class="image" :src="imagePath(image.name)" loading="lazy" />
       </div>
     </div>
   </div>
@@ -64,7 +64,7 @@ onBeforeUnmount(() => {
   flex-direction: column;
 }
 
-img {
+.image {
   display: block;
   width: auto;
   height: auto;
@@ -80,7 +80,7 @@ img {
   }
 }
 
-.image {
+.image-container {
   margin: 20px 0;
   width: min-content;
   height: min-content;

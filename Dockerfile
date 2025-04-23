@@ -16,7 +16,6 @@ RUN pnpm run build
 FROM node:22
 
 ENV FILE_MOUNT=/dominik-schwaiger.ch/images/temp/
-ENV IMAGE_FILES=/dominik-schwaiger.ch/images/
 ENV SCHWAIGER_ADMIN_PASSWORD=admin
 VOLUME /dominik-schwaiger.ch/images
 

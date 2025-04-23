@@ -12,8 +12,7 @@ mkShell {
   ];
 
   shellHook = ''
-    export FILE_MOUNT="./images/temp"
-    export IMAGE_FILES="./images"
+    export FILE_MOUNT="tmp"
     alias push="git switch main && git merge dev --no-ff --no-edit && git switch dev"
     pnpm install --shamefully-hoist
   '';

@@ -1,4 +1,6 @@
-export const imageThumbnailURL = (image: ImageFile) =>
-  "/images/thumbnails/" + image.name + "." + image.format;
-export const imageFullSizeURL = (image: ImageFile) =>
-  "/images/full_size/" + image.name + "." + image.format;
+export function imagePath(name: string) {
+  return `/images/${name}.webp`;
+}
+export function imageJsonPath() {
+  return "/images/images.json";
+}

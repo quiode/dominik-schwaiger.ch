@@ -18,25 +18,15 @@ export async function uploadImage(binaryString: Buffer) {
       .keepMetadata()
       .rotate()
       .webp({ quality: 90 })
-      .toFile(full_size + fileName + ".webp");
-    // create a thumbnail
-    const data2 = await sharp(binaryString)
-      .keepMetadata()
-      .rotate()
-      .resize({ width: 1920, withoutEnlargement: true })
-      .webp({ quality: 60 })
-      .toFile(thumbnails + fileName + ".webp");
+      .toFile(getImagePath(fileName));
     // add file to file index
     const json = await getJSON();
-    const newJSON = [
+    const newJSON: ImageFile[] = [
       ...json,
       {
         name: fileName,
         width: data1.width,
         height: data1.height,
-        thumbnail_height: data2.height,
-        thumbnail_width: data2.width,
-        format: "webp" as "webp",
         hash: hash,
       },
     ];
@@ -55,21 +45,17 @@ export async function deleteImage(id: string) {
     const filteredJSON = json.filter((item) => !item.name.startsWith(id));
     await writeJSON(filteredJSON);
     // remove image files
-    await rm(full_size + image.name + "." + image.format);
-    await rm(thumbnails + image.name + "." + image.format);
+    await rm(getImagePath(image.name));
   }
 }
 
 // Creates the files/folders if they do not already exist
 export async function createFiles() {
   if (!(await access_wrapper(json_file))) {
-    writeJSON([]);
+    writeJSON([] satisfies ImageFile[]);
   }
-  if (!(await access_wrapper(full_size))) {
-    await mkdir(full_size, { recursive: true });
-  }
-  if (!(await access_wrapper(thumbnails))) {
-    await mkdir(thumbnails, { recursive: true });
+  if (!(await access_wrapper(images))) {
+    await mkdir(images, { recursive: true });
   }
 }
 
@@ -98,17 +84,17 @@ async function writeJSON(data: ImageFile[]) {
   await writeFile(json_file, JSON.stringify(data), "utf-8");
 }
 
+function getImagePath(name: string) {
+  return images + "/" + name + ".webp";
+}
+
 // CONSTANTS AND INTERFACES
-export const thumbnails = process.env.IMAGE_FILES + "/" + "thumbnails/";
-export const full_size = process.env.IMAGE_FILES + "/" + "full_size/";
+export const images = process.env.IMAGE_FILES + "/";
 export const json_file = process.env.IMAGE_FILES + "/" + "images.json";
 
 export interface ImageFile {
   name: string;
   width: number | undefined;
   height: number | undefined;
-  thumbnail_width: number | undefined;
-  thumbnail_height: number | undefined;
-  format: "webp" | "jpg";
   hash: string; // hash of the original binary string
 }

@@ -8,13 +8,13 @@ importers:
 
   .:
     dependencies:
+      '@nuxt/image':
+        specifier: ^1.10.0
+        version: 1.10.0(@netlify/blobs@8.2.0)(db0@0.3.2)(ioredis@5.6.1)(magicast@0.3.5)
       bootstrap-icons:
         specifier: ^1.11.3
         version: 1.11.3
     devDependencies:
-      '@nuxt/image':
-        specifier: ^1.10.0
-        version: 1.10.0(@netlify/blobs@8.2.0)(db0@0.3.2)(ioredis@5.6.1)(magicast@0.3.5)
       '@nuxtjs/i18n':
         specifier: ^9.5.3
         version: 9.5.3(@vue/compiler-dom@3.5.13)(eslint@9.25.1(jiti@2.4.2))(magicast@0.3.5)(rollup@4.40.0)(vue@3.5.13(typescript@5.8.3))

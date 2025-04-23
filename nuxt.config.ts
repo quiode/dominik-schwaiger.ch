@@ -52,7 +52,7 @@ export default defineNuxtConfig({
   fileStorage: { mount: process.env.FILE_MOUNT },
 
   image: {
-    dir: process.env.FILE_MOUNT,
+    domains: ["dominik-schwaiger.ch"],
   },
 
   compatibilityDate: "2024-08-19",
