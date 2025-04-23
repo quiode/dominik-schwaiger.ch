@@ -57,12 +57,14 @@ export default defineNuxtConfig({
       placeholder: {
         modifiers: {
           quality: 10,
+          width: 720,
           blur: 5,
         },
       },
       thumbnail: {
         modifiers: {
           quality: 40,
+          width: 1920,
         },
       },
       full: {
