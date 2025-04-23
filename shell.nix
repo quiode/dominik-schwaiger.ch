@@ -14,6 +14,6 @@ mkShell {
   shellHook = ''
     export DATA_DIR="public/images"
     alias push="git switch main && git merge dev --no-ff --no-edit && git switch dev"
-    pnpm install --shamefully-hoist
+    npm install
   '';
 }

@@ -11,17 +11,14 @@ ARG SCHWAIGER_ADMIN_PASSWORD
 ENV DATA_DIR=${DATA_DIR}
 ENV SCHWAIGER_ADMIN_PASSWORD=${SCHWAIGER_ADMIN_PASSWORD}
 
-# install programms
-RUN npm install -g pnpm
-
 # install packages
 WORKDIR /dominik-schwaiger.ch
-COPY package.json pnpm-lock.yaml .npmrc ./
-RUN pnpm install --shamefully-hoist
+COPY package.json package-lock.json .npmrc ./
+RUN npm i
 
 # Add source files
 COPY . /dominik-schwaiger.ch
-RUN pnpm run build
+RUN npm run build
 
 # second build stage for smaller docker image
 FROM node:22
