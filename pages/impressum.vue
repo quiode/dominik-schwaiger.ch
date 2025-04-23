@@ -6,9 +6,9 @@
       <h1>{{ $t('contact_adress') }}</h1>
       Dominik Schwaiger
       <br />
-      Hofackerstrasse 3
+      Büelstrasse 6
       <br />
-      8722 Kaltbrunn, {{ $t('switzerland') }}
+      8863 Buttikon, {{ $t('switzerland') }}
       <br />
       E-Mail: <a href="mailto:mail@dominik-schwaiger.ch">mail@dominik-schwaiger.ch</a>
 
