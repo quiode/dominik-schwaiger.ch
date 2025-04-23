@@ -40,6 +40,7 @@ onBeforeUnmount(() => {
     </div>
   </div>
 
+  <!-- TODO: instead of changing things here, define routes and get the images from the parameter. hopefully this forces the images library to work! -->
   <ImageSlideShow v-if="selectedImage != undefined" :image="images[selectedImage]"
     @next="selectedImage = (selectedImage + 1) % images.length"
     @previous="selectedImage = selectedImage - 1 >= 0 ? selectedImage - 1 : images.length - 1"
