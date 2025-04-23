@@ -9,4 +9,3 @@ export default defineEventHandler(async (event) => {
     await uploadImage(binaryString);
   }
 });
-

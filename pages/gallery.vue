@@ -45,7 +45,7 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped lang="scss">
-@import '../assets/colors.scss';
+@use '../assets/colors.scss';
 
 .gallery {
   display: flex;
@@ -71,7 +71,7 @@ img {
   max-width: 30vw;
   min-width: 20px;
   border-radius: 8px;
-  box-shadow: rgba($primary-color, 0.25) 0px 7px 29px 0px;
+  box-shadow: rgba(colors.$primary-color, 0.25) 0px 7px 29px 0px;
 
   transition: box-shadow 0.5s ease-in-out;
 
@@ -87,7 +87,7 @@ img {
   cursor: pointer;
 
   :hover {
-    box-shadow: rgba($primary-color, 1) 0px 7px 29px 0px;
+    box-shadow: rgba(colors.$primary-color, 1) 0px 7px 29px 0px;
   }
 }
 </style>

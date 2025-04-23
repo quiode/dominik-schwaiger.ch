@@ -14,7 +14,7 @@ const svgURL = computed(() => "/CV-" + i18n.locale.value + ".svg");
 </template>
 
 <style scoped lang="scss">
-@import '../assets/colors.scss';
+@use '../assets/colors.scss';
 
 .container {
   display: flex;
@@ -35,7 +35,7 @@ const svgURL = computed(() => "/CV-" + i18n.locale.value + ".svg");
 
 .cv {
   border-radius: 10px;
-  border: 3px $primary-color solid;
+  border: 3px colors.$primary-color solid;
   transition: box-shadow 0.25s;
 
   &:hover {

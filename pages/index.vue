@@ -28,7 +28,7 @@ definePageMeta({
 </template>
 
 <style lang="scss" scoped>
-@import '../assets/colors.scss';
+@use '../assets/colors.scss';
 
 #root {
   position: relative;
@@ -55,10 +55,10 @@ definePageMeta({
     width: max-content;
 
     @media screen and (max-width: 768px) {
-      width: 100%;  
+      width: 100%;
     }
-  }  
-}  
+  }
+}
 
 #container {
   display: flex;
@@ -114,7 +114,7 @@ definePageMeta({
     width: $width;
     aspect-ratio: 1/1;
     border-radius: 50%;
-    background: $gradient-light-top;
+    background: colors.$gradient-light-top;
     z-index: -1;
     animation: spin 4s linear infinite;
     transform: translate(-$border, -$border) rotate(0deg);

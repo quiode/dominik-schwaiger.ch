@@ -1,7 +1,7 @@
-import { v4 as uuidv4 } from 'uuid';
-import sharp from 'sharp';
-import { writeFile, readFile, access, mkdir, rm } from 'fs/promises';
-import { hash } from 'crypto';
+import { v4 as uuidv4 } from "uuid";
+import sharp from "sharp";
+import { writeFile, readFile, access, mkdir, rm } from "fs/promises";
+import { hash } from "crypto";
 
 // TODO: concurrency problems could occur with json if one thread safes an old value. Should not occur if one normally only uploads and deletes not concurrent, but synchronization would be beneficial
 
@@ -9,7 +9,7 @@ export async function uploadImage(binaryString: Buffer) {
   const hash = hashBuffer(binaryString);
 
   // only upload image if it hasn't been already uploaded
-  
+
   if (!(await imageExists(hash))) {
     const fileName = uuidv4();
     // get metadata
@@ -28,7 +28,18 @@ export async function uploadImage(binaryString: Buffer) {
       .toFile(thumbnails + fileName + ".webp");
     // add file to file index
     const json = await getJSON();
-    const newJSON = [...json, { name: fileName, width: data1.width, height: data1.height, thumbnail_height: data2.height, thumbnail_width: data2.width, format: 'webp' as 'webp', hash: hash }];
+    const newJSON = [
+      ...json,
+      {
+        name: fileName,
+        width: data1.width,
+        height: data1.height,
+        thumbnail_height: data2.height,
+        thumbnail_width: data2.width,
+        format: "webp" as "webp",
+        hash: hash,
+      },
+    ];
     await writeJSON(newJSON);
   }
 }
@@ -36,16 +47,16 @@ export async function uploadImage(binaryString: Buffer) {
 export async function deleteImage(id: string) {
   // remove image from json
   const json = await getJSON();
-  const image = json.find(item => item.name.startsWith(id));
+  const image = json.find((item) => item.name.startsWith(id));
 
   // only if image exists remove it
   if (image) {
     // remove json
-    const filteredJSON = json.filter(item => !item.name.startsWith(id));
+    const filteredJSON = json.filter((item) => !item.name.startsWith(id));
     await writeJSON(filteredJSON);
     // remove image files
-    await rm(full_size + image.name + '.' + image.format);
-    await rm(thumbnails + image.name + '.' + image.format);
+    await rm(full_size + image.name + "." + image.format);
+    await rm(thumbnails + image.name + "." + image.format);
   }
 }
 
@@ -63,17 +74,20 @@ export async function createFiles() {
 }
 
 function access_wrapper(file: string) {
-  return access(file).then(() => true, () => false);
+  return access(file).then(
+    () => true,
+    () => false
+  );
 }
 
 function hashBuffer(buffer: Buffer) {
-  return hash('sha256', buffer);
+  return hash("sha256", buffer);
 }
 
 async function imageExists(hash: string) {
   const json: ImageFile[] = await getJSON();
 
-  return json.some(image => image.hash == hash);
+  return json.some((image) => image.hash == hash);
 }
 
 async function getJSON(): Promise<ImageFile[]> {
@@ -81,7 +95,7 @@ async function getJSON(): Promise<ImageFile[]> {
 }
 
 async function writeJSON(data: ImageFile[]) {
-  await writeFile(json_file, JSON.stringify(data), 'utf-8');
+  await writeFile(json_file, JSON.stringify(data), "utf-8");
 }
 
 // CONSTANTS AND INTERFACES
@@ -95,6 +109,6 @@ export interface ImageFile {
   height: number | undefined;
   thumbnail_width: number | undefined;
   thumbnail_height: number | undefined;
-  format: 'webp' | 'jpg',
-  hash: string // hash of the original binary string
-};
+  format: "webp" | "jpg";
+  hash: string; // hash of the original binary string
+}

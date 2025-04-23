@@ -8,4 +8,4 @@ export default defineEventHandler(async (event) => {
 
 export interface ImageDeleteBody {
   id: string;
-};
+}

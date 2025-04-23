@@ -1,54 +1,57 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-	typescript: {
-		strict: true,
-		typeCheck: true,
-	},
+  typescript: {
+    strict: true,
+    typeCheck: true,
+  },
 
-	vue: {
-		compilerOptions: {
-			isCustomElement: (tag) => ['webring-banner'].includes(tag)
-		}
-	},
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => ["webring-banner"].includes(tag),
+    },
+  },
 
-	app: {
-		head: {
-			title: 'Dominik Schwaiger', script: [
-				{
-					async: true,
-					src: "https://polyring.ch/embed.js",
-				}
-			]
-		},
-	},
+  app: {
+    head: {
+      title: "Dominik Schwaiger",
+      script: [
+        {
+          async: true,
+          src: "https://polyring.ch/embed.js",
+        },
+      ],
+    },
+  },
 
-	css: [
-		'~/assets/colors.scss',
-		'~/assets/global.scss',
-		'bootstrap-icons/font/bootstrap-icons.scss',
-	],
+  css: [
+    "~/assets/colors.scss",
+    "~/assets/global.scss",
+    "bootstrap-icons/font/bootstrap-icons.scss",
+  ],
 
-	modules: [
-		[
-			'@nuxtjs/i18n',
-			{
-				locales: [
-					{ code: 'en', file: 'en-GB.json' },
-					{ code: 'de', file: 'de-CH.json' },
-				],
-				defaultLocale: 'en',
-				strategy: 'prefix_and_default',
-				lazy: true,
-				langDir: 'lang',
-				detectBrowserLanguage: {
-					useCookie: true,
-					cookieKey: 'i18n_redirected',
-					redirectOn: 'root', // recommended
-				}
-			},
-		],
-		['nuxt-file-storage', { mount: process.env.FILE_MOUNT }]
-	],
+  modules: [
+    [
+      "@nuxtjs/i18n",
+      {
+        locales: [
+          { code: "en", file: "en-GB.json" },
+          { code: "de", file: "de-CH.json" },
+        ],
+        defaultLocale: "en",
+        strategy: "prefix_and_default",
+        lazy: true,
+        detectBrowserLanguage: {
+          useCookie: true,
+          cookieKey: "i18n_redirected",
+          redirectOn: "root", // recommended
+        },
+        bundle: {
+          optimizeTranslationDirective: false,
+        },
+      },
+    ],
+    ["nuxt-file-storage", { mount: process.env.FILE_MOUNT }],
+  ],
 
-	compatibilityDate: '2024-08-19',
+  compatibilityDate: "2024-08-19",
 });

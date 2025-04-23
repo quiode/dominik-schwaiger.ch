@@ -1,2 +1,4 @@
-export const imageThumbnailURL = (image: ImageFile) => "/images/thumbnails/" + image.name + "." + image.format;
-export const imageFullSizeURL = (image: ImageFile) => "/images/full_size/" + image.name + "." + image.format;
+export const imageThumbnailURL = (image: ImageFile) =>
+  "/images/thumbnails/" + image.name + "." + image.format;
+export const imageFullSizeURL = (image: ImageFile) =>
+  "/images/full_size/" + image.name + "." + image.format;
