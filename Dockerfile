@@ -1,4 +1,4 @@
-FROM node:20
+FROM node:22
 
 # install programms
 RUN npm install -g pnpm
@@ -13,7 +13,7 @@ COPY . /dominik-schwaiger.ch
 RUN pnpm run build
 
 # second build stage for smaller docker image
-FROM node:20
+FROM node:22
 
 ENV FILE_MOUNT=/dominik-schwaiger.ch/images/temp/
 ENV IMAGE_FILES=/dominik-schwaiger.ch/images/
