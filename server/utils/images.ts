@@ -3,6 +3,17 @@ import sharp from "sharp";
 import { writeFile, readFile, access, mkdir, rm } from "fs/promises";
 import { hash } from "crypto";
 
+// CONSTANTS AND INTERFACES
+export const images = "public/images";
+export const json_file = images + "/" + "images.json";
+
+export interface ImageFile {
+  name: string;
+  width: number | undefined;
+  height: number | undefined;
+  hash: string; // hash of the original binary string
+}
+
 // TODO: concurrency problems could occur with json if one thread safes an old value. Should not occur if one normally only uploads and deletes not concurrent, but synchronization would be beneficial
 
 export async function uploadImage(binaryString: Buffer) {
@@ -86,15 +97,4 @@ async function writeJSON(data: ImageFile[]) {
 
 function getImagePath(name: string) {
   return images + "/" + name + ".webp";
-}
-
-// CONSTANTS AND INTERFACES
-export const images = process.env.IMAGE_FILES + "/";
-export const json_file = process.env.IMAGE_FILES + "/" + "images.json";
-
-export interface ImageFile {
-  name: string;
-  width: number | undefined;
-  height: number | undefined;
-  hash: string; // hash of the original binary string
 }
