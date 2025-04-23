@@ -29,29 +29,27 @@ export default defineNuxtConfig({
     "bootstrap-icons/font/bootstrap-icons.scss",
   ],
 
-  modules: [
-    [
-      "@nuxtjs/i18n",
-      {
-        locales: [
-          { code: "en", file: "en-GB.json" },
-          { code: "de", file: "de-CH.json" },
-        ],
-        defaultLocale: "en",
-        strategy: "prefix_and_default",
-        lazy: true,
-        detectBrowserLanguage: {
-          useCookie: true,
-          cookieKey: "i18n_redirected",
-          redirectOn: "root", // recommended
-        },
-        bundle: {
-          optimizeTranslationDirective: false,
-        },
-      },
+  modules: ["@nuxtjs/i18n", "nuxt-file-storage"],
+
+  i18n: {
+    locales: [
+      { code: "en", file: "en-GB.json" },
+      { code: "de", file: "de-CH.json" },
     ],
-    ["nuxt-file-storage", { mount: process.env.FILE_MOUNT }],
-  ],
+    defaultLocale: "en",
+    strategy: "prefix_and_default",
+    lazy: true,
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: "i18n_redirected",
+      redirectOn: "root", // recommended
+    },
+    bundle: {
+      optimizeTranslationDirective: false,
+    },
+  },
+
+  fileStorage: { mount: process.env.FILE_MOUNT },
 
   compatibilityDate: "2024-08-19",
 });
