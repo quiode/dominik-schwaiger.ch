@@ -13,6 +13,5 @@ mkShell {
 
   shellHook = ''
     pnpm install --shamefully-hoist
-    pnpm run dev
   '';
 }
