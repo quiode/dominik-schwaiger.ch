@@ -53,6 +53,24 @@ export default defineNuxtConfig({
 
   image: {
     domains: ["dominik-schwaiger.ch"],
+    presets: {
+      placeholder: {
+        modifiers: {
+          quality: 10,
+          blur: 5,
+        },
+      },
+      thumbnail: {
+        modifiers: {
+          quality: 40,
+        },
+      },
+      full: {
+        modifiers: {
+          quality: 100,
+        },
+      },
+    },
   },
 
   compatibilityDate: "2024-08-19",

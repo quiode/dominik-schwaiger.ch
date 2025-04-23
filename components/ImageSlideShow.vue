@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+const img = useImage()
 const props = defineProps<{
   image: ImageFile,
 }>();
@@ -33,10 +34,8 @@ let hideNav = ref(true);
           &#8592;
         </div>
       </div>
-
-      <NuxtImg class="image" :src="imagePath(image.name)" placeholder @mouseenter="hideNav = true"
-        @mouseleave="hideNav = false" @click.stop=""></NuxtImg>
-
+      <NuxtImg class="image" preset="full" :placeholder="img(imagePath(image.name), {}, { preset: 'thumbnail' })"
+        :src="imagePath(image.name)" @mouseenter="hideNav = true" @mouseleave="hideNav = false" @click.stop="" />
       <div @mouseenter="hideNav = false" class="nav-button" :class="{ hidden: hideNav }">
         <div @click.stop="emit('next')" class="nav-circle">
           &#8594;

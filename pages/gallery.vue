@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+const img = useImage()
 let selectedImage = ref(undefined as undefined | number);
 let columns = ref([[], [], []] as [ImageFile[], ImageFile[], ImageFile[]]);
 let images = ref([] as ImageFile[]);
@@ -33,7 +34,8 @@ onBeforeUnmount(() => {
   <div class="gallery" :class="{ slideshow: selectedImage != undefined }">
     <div v-for="column in columns" class="column">
       <div v-for="image in column" class="image-container" @click="onSelectImage(image)">
-        <NuxtImg class="image" :src="imagePath(image.name)" loading="lazy" />
+        <NuxtImg preset="thumbnail" :placeholder="img(imagePath(image.name), {}, { preset: 'placeholder' })"
+          class="image" :src="imagePath(image.name)" />
       </div>
     </div>
   </div>
