@@ -54,7 +54,6 @@ export default defineNuxtConfig({
   fileStorage: { mount: FILE_MOUNT },
 
   image: {
-    dir: DATA_DIR,
     domains: ["localhost", "dominik-schwaiger.ch"],
     presets: {
       placeholder: {
@@ -82,4 +81,8 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: "2024-08-19",
+
+  devtools: {
+    enabled: true,
+  },
 });

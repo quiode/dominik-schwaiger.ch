@@ -1,4 +1,4 @@
-ARG DATA_DIR=/dominik-schwaiger.ch/data/
+ARG DATA_DIR=/dominik-schwaiger.ch/public/images
 ARG SCHWAIGER_ADMIN_PASSWORD=admin
 
 FROM node:22

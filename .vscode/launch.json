@@ -10,7 +10,7 @@
       "request": "launch",
       "type": "node-terminal",
       "env": {
-        "DATA_DIR": "${workspaceFolder}/data/",
+        "DATA_DIR": "${workspaceFolder}/public/images"
       }
     }
   ]
