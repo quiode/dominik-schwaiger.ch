@@ -1,8 +1,9 @@
 build:
   image: docker:24.0.5
   stage: build
-  only:
-    - main
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "main"'
+    - when: manual
   services:
     - docker:24.0.5-dind
   variables:

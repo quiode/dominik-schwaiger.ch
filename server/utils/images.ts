@@ -2,6 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 import sharp from "sharp";
 import { writeFile, readFile, access, mkdir, rm } from "fs/promises";
 import { hash } from "crypto";
+import { join } from "path";
 
 // TODO: concurrency problems could occur with json if one thread safes an old value. Should not occur if one normally only uploads and deletes not concurrent, but synchronization would be beneficial
 
@@ -18,25 +19,15 @@ export async function uploadImage(binaryString: Buffer) {
       .keepMetadata()
       .rotate()
       .webp({ quality: 90 })
-      .toFile(full_size + fileName + ".webp");
-    // create a thumbnail
-    const data2 = await sharp(binaryString)
-      .keepMetadata()
-      .rotate()
-      .resize({ width: 1920, withoutEnlargement: true })
-      .webp({ quality: 60 })
-      .toFile(thumbnails + fileName + ".webp");
+      .toFile(getImagePath(fileName));
     // add file to file index
     const json = await getJSON();
-    const newJSON = [
+    const newJSON: ImageFile[] = [
       ...json,
       {
         name: fileName,
         width: data1.width,
         height: data1.height,
-        thumbnail_height: data2.height,
-        thumbnail_width: data2.width,
-        format: "webp" as "webp",
         hash: hash,
       },
     ];
@@ -55,21 +46,20 @@ export async function deleteImage(id: string) {
     const filteredJSON = json.filter((item) => !item.name.startsWith(id));
     await writeJSON(filteredJSON);
     // remove image files
-    await rm(full_size + image.name + "." + image.format);
-    await rm(thumbnails + image.name + "." + image.format);
+    await rm(getImagePath(image.name));
   }
 }
 
 // Creates the files/folders if they do not already exist
 export async function createFiles() {
-  if (!(await access_wrapper(json_file))) {
-    writeJSON([]);
+  if (!(await access_wrapper(DATA_DIR))) {
+    await mkdir(DATA_DIR, { recursive: true });
   }
-  if (!(await access_wrapper(full_size))) {
-    await mkdir(full_size, { recursive: true });
+  if (!(await access_wrapper(IMAGES_DIR))) {
+    await mkdir(IMAGES_DIR, { recursive: true });
   }
-  if (!(await access_wrapper(thumbnails))) {
-    await mkdir(thumbnails, { recursive: true });
+  if (!(await access_wrapper(JSON_FILE))) {
+    writeJSON([] satisfies ImageFile[]);
   }
 }
 
@@ -91,24 +81,13 @@ async function imageExists(hash: string) {
 }
 
 async function getJSON(): Promise<ImageFile[]> {
-  return JSON.parse(await readFile(json_file, "utf8"));
+  return JSON.parse(await readFile(JSON_FILE, "utf8"));
 }
 
 async function writeJSON(data: ImageFile[]) {
-  await writeFile(json_file, JSON.stringify(data), "utf-8");
+  await writeFile(JSON_FILE, JSON.stringify(data), "utf-8");
 }
 
-// CONSTANTS AND INTERFACES
-export const thumbnails = process.env.IMAGE_FILES + "thumbnails/";
-export const full_size = process.env.IMAGE_FILES + "full_size/";
-export const json_file = process.env.IMAGE_FILES + "images.json";
-
-export interface ImageFile {
-  name: string;
-  width: number | undefined;
-  height: number | undefined;
-  thumbnail_width: number | undefined;
-  thumbnail_height: number | undefined;
-  format: "webp" | "jpg";
-  hash: string; // hash of the original binary string
+function getImagePath(name: string) {
+  return join(IMAGES_DIR, name + ".webp");
 }

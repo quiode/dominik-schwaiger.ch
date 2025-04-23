@@ -1,9 +1,10 @@
 <script lang="ts" setup>
+const img = useImage()
 let selectedImage = ref(undefined as undefined | number);
 let columns = ref([[], [], []] as [ImageFile[], ImageFile[], ImageFile[]]);
 let images = ref([] as ImageFile[]);
 
-$fetch<ImageFile[]>('/images/images.json')
+$fetch<ImageFile[]>(imageJsonPath())
   .then(data => data.reverse())
   .then(data => {
     columns.value = distributeElements(data);
@@ -32,12 +33,14 @@ onBeforeUnmount(() => {
 <template>
   <div class="gallery" :class="{ slideshow: selectedImage != undefined }">
     <div v-for="column in columns" class="column">
-      <div v-for="image in column" class="image" @click="onSelectImage(image)">
-        <img :src="imageThumbnailURL(image)" loading="lazy" />
+      <div v-for="image in column" class="image-container" @click="onSelectImage(image)">
+        <NuxtImg preset="thumbnail" :placeholder="img(imagePath(image.name), {}, { preset: 'placeholder' })"
+          class="image" :src="imagePath(image.name)" />
       </div>
     </div>
   </div>
 
+  <!-- TODO: instead of changing things here, define routes and get the images from the parameter. hopefully this forces the images library to work! -->
   <ImageSlideShow v-if="selectedImage != undefined" :image="images[selectedImage]"
     @next="selectedImage = (selectedImage + 1) % images.length"
     @previous="selectedImage = selectedImage - 1 >= 0 ? selectedImage - 1 : images.length - 1"
@@ -64,7 +67,7 @@ onBeforeUnmount(() => {
   flex-direction: column;
 }
 
-img {
+.image {
   display: block;
   width: auto;
   height: auto;
@@ -80,7 +83,7 @@ img {
   }
 }
 
-.image {
+.image-container {
   margin: 20px 0;
   width: min-content;
   height: min-content;

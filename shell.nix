@@ -12,9 +12,8 @@ mkShell {
   ];
 
   shellHook = ''
-    export FILE_MOUNT="${builtins.toString ./.}/images/temp"
-    export IMAGE_FILES="${builtins.toString ./.}/images"
+    export DATA_DIR="public/images"
     alias push="git switch main && git merge dev --no-ff --no-edit && git switch dev"
-    pnpm install --shamefully-hoist
+    npm install
   '';
 }
