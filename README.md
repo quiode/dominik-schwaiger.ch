@@ -11,7 +11,7 @@ Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
 Make sure to install the dependencies:
 
 ```bash
-pnpm install --shamefully-hoist
+npm i
 ```
 
 ## Development Server
@@ -19,7 +19,7 @@ pnpm install --shamefully-hoist
 Start the development server on <http://localhost:3000>
 
 ```bash
-pnpm run dev
+npm run dev
 ```
 
 ## Production
@@ -27,13 +27,13 @@ pnpm run dev
 Build the application for production:
 
 ```bash
-pnpm run build
+npm run build
 ```
 
 Locally preview production build:
 
 ```bash
-pnpm run preview
+npm run preview
 ```
 
 Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment) for more information.

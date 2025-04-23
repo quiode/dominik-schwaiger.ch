@@ -11,7 +11,6 @@
   "engines": {
     "node": ">=22.14.0"
   },
-  "packageManager": "pnpm@10.9.0",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -33,6 +32,7 @@
     "vue-tsc": "^2.2.10"
   },
   "dependencies": {
+    "@nuxt/image": "^1.10.0",
     "bootstrap-icons": "^1.11.3"
   }
 }
