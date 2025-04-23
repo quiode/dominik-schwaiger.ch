@@ -2,10 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 import sharp from "sharp";
 import { writeFile, readFile, access, mkdir, rm } from "fs/promises";
 import { hash } from "crypto";
-import type { ImageFile } from "./ImageFile";
-import { IMAGES_DIR, JSON_FILE } from "./constants";
 import { join } from "path";
-import { FILE } from "dns";
 
 // TODO: concurrency problems could occur with json if one thread safes an old value. Should not occur if one normally only uploads and deletes not concurrent, but synchronization would be beneficial
 

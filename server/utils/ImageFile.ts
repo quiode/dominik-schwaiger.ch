@@ -1,4 +1,3 @@
-
 export interface ImageFile {
   name: string;
   width: number | undefined;
