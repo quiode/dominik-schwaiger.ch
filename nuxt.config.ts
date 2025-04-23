@@ -65,7 +65,7 @@ export default defineNuxtConfig({
       },
       thumbnail: {
         modifiers: {
-          quality: 40,
+          quality: 60,
           width: 1920,
         },
       },
