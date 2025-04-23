@@ -21,16 +21,16 @@ const links: {
 <template>
   <div>
     <div id="container">
-          <a class="link" :class="{ 'link-2': index % 2 == 0 }" v-for="(link, index) in links" :key="index" :href="link.url"
-            target="_blank">
-            {{ link.text }}
-        </a>
+      <a class="link" :class="{ 'link-2': index % 2 == 0 }" v-for="(link, index) in links" :key="index" :href="link.url"
+        target="_blank">
+        {{ link.text }}
+      </a>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-@import '../assets/colors.scss';
+@use '../assets/colors.scss';
 
 #container {
   width: 65%;
@@ -57,7 +57,7 @@ const links: {
   font-size: 2em;
 
   /* hover */
-  background: linear-gradient(to left, $background-color 50%, $secondary-color 50%);
+  background: linear-gradient(to left, colors.$background-color 50%, colors.$secondary-color 50%);
   background-size: 200% 100%;
   background-position: right bottom;
   transition: background-position 0.5s ease;
@@ -79,8 +79,8 @@ const links: {
 .link-2 {
   background-position: left bottom !important;
   background-image: linear-gradient(to right,
-      $background-color 50%,
-      $secondary-color 50%) !important;
+      colors.$background-color 50%,
+      colors.$secondary-color 50%) !important;
 
   &:hover {
     background-position: right bottom !important;

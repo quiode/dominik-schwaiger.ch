@@ -12,7 +12,7 @@
       "env": {
         "FILE_MOUNT": "${workspaceFolder}/images/temp/",
         "IMAGE_FILES": "${workspaceFolder}/images/"
-      },
+      }
     }
   ]
 }

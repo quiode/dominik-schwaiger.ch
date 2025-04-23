@@ -57,7 +57,7 @@ const switchLocalePath = useSwitchLocalePath();
 </template>
 
 <style lang="scss" scoped>
-@import '../assets/colors.scss';
+@use '../assets/colors.scss';
 
 nav {
   position: relative;
@@ -96,12 +96,12 @@ nav {
       }
 
       &:hover {
-        color: $secondary-color;
+        color: colors.$secondary-color;
       }
     }
 
     .active {
-      color: $secondary-color;
+      color: colors.$secondary-color;
       text-decoration: none !important;
     }
   }
@@ -123,27 +123,27 @@ nav {
     }
 
     .item {
-      color: $primary-color;
+      color: colors.$primary-color;
       text-decoration: none;
       $margin: 1%;
       margin: 0 $margin;
 
       :visited {
-        color: $primary-color;
+        color: colors.$primary-color;
       }
 
       :hover {
-        color: $primary-color;
+        color: colors.$primary-color;
         opacity: 0.8;
       }
 
       :active {
-        color: $primary-color;
+        color: colors.$primary-color;
         text-decoration: underline;
       }
 
       :link {
-        color: $primary-color;
+        color: colors.$primary-color;
         text-decoration: none;
       }
     }
@@ -151,7 +151,7 @@ nav {
 
   .vr {
     width: 1px;
-    background-color: $primary-color;
+    background-color: colors.$primary-color;
     height: initial;
   }
 

@@ -6,7 +6,7 @@
 </template>
 
 <style lang="scss" scoped>
-  div {
-    margin: 0.5% 1%;
-  }
+div {
+  margin: 0.5% 1%;
+}
 </style>

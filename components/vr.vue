@@ -5,11 +5,11 @@
 </template>
 
 <style lang="scss" scoped>
-  @import '../assets/colors.scss';
+@use '../assets/colors.scss';
 
-  .vr {
-    width: 1px;
-    height: 50%;
-    background-color: $primary-color;
-  }
+.vr {
+  width: 1px;
+  height: 50%;
+  background-color: colors.$primary-color;
+}
 </style>
