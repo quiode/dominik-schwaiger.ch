@@ -34,9 +34,7 @@ let hideNav = ref(true);
         </div>
       </div>
 
-      <div class="image"
-        :style="`background-image: url('${imageThumbnailURL(image)}) url('${imageFullSizeURL(image)});`"
-        @mouseenter="hideNav = true" @mouseleave="hideNav = false" @click.stop=""></div>
+      <NuxtImg :src="imageFullSizeURL(image)"></NuxtImg>
 
       <div @mouseenter="hideNav = false" class="nav-button" :class="{ hidden: hideNav }">
         <div @click.stop="emit('next')" class="nav-circle">
