@@ -1,13 +1,9 @@
 <script lang="ts" setup>
-const isChrome = !!(window as any).chrome;
-
 const props = defineProps<{
   image: ImageFile,
 }>();
 
 const emit = defineEmits(['close', 'next', 'previous']);
-let loaded = ref(new Set<string>());
-const imageLoaded = computed(() => loaded.value.has(props.image.name));
 
 onMounted(() => {
   window.addEventListener('keydown', onKeyDown);
@@ -31,19 +27,16 @@ let hideNav = ref(true);
 
 <template>
   <div @click="emit('close')" class="container">
-    <div class="inner-container" :class="{
-      chrome: isChrome, loading: !imageLoaded
-    }">
+    <div class="inner-container">
       <div @mouseenter="hideNav = false" class="nav-button" :class="{ hidden: hideNav }">
         <div @click.stop="emit('previous')" class="nav-circle">
           &#8592;
         </div>
       </div>
 
-      <img loading="eager" class="small" :src="imageThumbnailURL(image)" @mouseenter="hideNav = true"
-        @mouseleave="hideNav = false" @click.stop="">
-      <img loading="eager" class="big" @mouseenter="hideNav = true" @mouseleave="hideNav = false" @click.stop=""
-        :src="imageFullSizeURL(image)" @load="loaded.add(image.name)">
+      <div class="image"
+        :style="`background-image: url('${imageThumbnailURL(image)}) url('${imageFullSizeURL(image)});`"
+        @mouseenter="hideNav = true" @mouseleave="hideNav = false" @click.stop=""></div>
 
       <div @mouseenter="hideNav = false" class="nav-button" :class="{ hidden: hideNav }">
         <div @click.stop="emit('next')" class="nav-circle">
@@ -94,7 +87,7 @@ let hideNav = ref(true);
   }
 }
 
-img {
+.image {
   max-width: min(95%, calc(100% - 400px));
   max-height: 95%;
   cursor: default;
@@ -144,23 +137,5 @@ img {
   @media screen and (max-width: 768px) {
     transform: rotate(90deg);
   }
-}
-
-.loading {
-  .small {
-    display: block !important;
-  }
-
-  .big {
-    display: none !important;
-  }
-}
-
-.small {
-  display: none;
-}
-
-.big {
-  display: block;
 }
 </style>

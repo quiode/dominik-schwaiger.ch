@@ -99,9 +99,9 @@ async function writeJSON(data: ImageFile[]) {
 }
 
 // CONSTANTS AND INTERFACES
-export const thumbnails = process.env.IMAGE_FILES + "thumbnails/";
-export const full_size = process.env.IMAGE_FILES + "full_size/";
-export const json_file = process.env.IMAGE_FILES + "images.json";
+export const thumbnails = process.env.IMAGE_FILES + "/" + "thumbnails/";
+export const full_size = process.env.IMAGE_FILES + "/" + "full_size/";
+export const json_file = process.env.IMAGE_FILES + "/" + "images.json";
 
 export interface ImageFile {
   name: string;
