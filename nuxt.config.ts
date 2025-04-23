@@ -1,3 +1,5 @@
+import { DATA_DIR, FILE_MOUNT } from "./server/utils/constants";
+
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   typescript: {
@@ -49,10 +51,11 @@ export default defineNuxtConfig({
     },
   },
 
-  fileStorage: { mount: process.env.FILE_MOUNT },
+  fileStorage: { mount: FILE_MOUNT },
 
   image: {
-    domains: ["dominik-schwaiger.ch"],
+    dir: DATA_DIR,
+    domains: ["localhost", "dominik-schwaiger.ch"],
     presets: {
       placeholder: {
         modifiers: {

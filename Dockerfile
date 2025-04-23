@@ -1,14 +1,14 @@
-ARG FILE_MOUNT=/dominik-schwaiger.ch/tmp/
+ARG DATA_DIR=/dominik-schwaiger.ch/data/
 ARG SCHWAIGER_ADMIN_PASSWORD=admin
 
 FROM node:22
 
 # Inherit ARGS from Global Scope
-ARG FILE_MOUNT
+ARG DATA_DIR
 ARG SCHWAIGER_ADMIN_PASSWORD
 
 # Set Environment Variables
-ENV FILE_MOUNT=${FILE_MOUNT}
+ENV DATA_DIR=${DATA_DIR}
 ENV SCHWAIGER_ADMIN_PASSWORD=${SCHWAIGER_ADMIN_PASSWORD}
 
 # install programms
@@ -26,14 +26,14 @@ RUN pnpm run build
 # second build stage for smaller docker image
 FROM node:22
 # Inherit ARGS from Global Scope
-ARG FILE_MOUNT
+ARG DATA_DIR
 ARG SCHWAIGER_ADMIN_PASSWORD
 
 # Set Environment Variables
-ENV FILE_MOUNT=${FILE_MOUNT}
+ENV DATA_DIR=${DATA_DIR}
 ENV SCHWAIGER_ADMIN_PASSWORD=${SCHWAIGER_ADMIN_PASSWORD}
 
-VOLUME /dominik-schwaiger.ch/public/images
+VOLUME ${DATA_DIR}
 
 WORKDIR /dominik-schwaiger.ch
 COPY --from=0 /dominik-schwaiger.ch/.output/ /dominik-schwaiger.ch/

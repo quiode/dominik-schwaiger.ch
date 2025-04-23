@@ -2,17 +2,10 @@ import { v4 as uuidv4 } from "uuid";
 import sharp from "sharp";
 import { writeFile, readFile, access, mkdir, rm } from "fs/promises";
 import { hash } from "crypto";
-
-// CONSTANTS AND INTERFACES
-export const images = "public/images";
-export const json_file = images + "/" + "images.json";
-
-export interface ImageFile {
-  name: string;
-  width: number | undefined;
-  height: number | undefined;
-  hash: string; // hash of the original binary string
-}
+import type { ImageFile } from "./ImageFile";
+import { IMAGES_DIR, JSON_FILE } from "./constants";
+import { join } from "path";
+import { FILE } from "dns";
 
 // TODO: concurrency problems could occur with json if one thread safes an old value. Should not occur if one normally only uploads and deletes not concurrent, but synchronization would be beneficial
 
@@ -62,11 +55,14 @@ export async function deleteImage(id: string) {
 
 // Creates the files/folders if they do not already exist
 export async function createFiles() {
-  if (!(await access_wrapper(json_file))) {
-    writeJSON([] satisfies ImageFile[]);
+  if (!(await access_wrapper(DATA_DIR))) {
+    await mkdir(DATA_DIR, { recursive: true });
   }
-  if (!(await access_wrapper(images))) {
-    await mkdir(images, { recursive: true });
+  if (!(await access_wrapper(IMAGES_DIR))) {
+    await mkdir(IMAGES_DIR, { recursive: true });
+  }
+  if (!(await access_wrapper(JSON_FILE))) {
+    writeJSON([] satisfies ImageFile[]);
   }
 }
 
@@ -88,13 +84,13 @@ async function imageExists(hash: string) {
 }
 
 async function getJSON(): Promise<ImageFile[]> {
-  return JSON.parse(await readFile(json_file, "utf8"));
+  return JSON.parse(await readFile(JSON_FILE, "utf8"));
 }
 
 async function writeJSON(data: ImageFile[]) {
-  await writeFile(json_file, JSON.stringify(data), "utf-8");
+  await writeFile(JSON_FILE, JSON.stringify(data), "utf-8");
 }
 
 function getImagePath(name: string) {
-  return images + "/" + name + ".webp";
+  return join(IMAGES_DIR, name + ".webp");
 }

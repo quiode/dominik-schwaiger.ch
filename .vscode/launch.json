@@ -10,7 +10,7 @@
       "request": "launch",
       "type": "node-terminal",
       "env": {
-        "FILE_MOUNT": "${workspaceFolder}/tmp/",
+        "DATA_DIR": "${workspaceFolder}/data/",
       }
     }
   ]

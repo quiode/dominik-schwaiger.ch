@@ -10,5 +10,4 @@ dist
 # drawio
 *.bkp
 
-images/*
-!images/README
+data
