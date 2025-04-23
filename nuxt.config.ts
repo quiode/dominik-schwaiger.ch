@@ -56,9 +56,9 @@ export default defineNuxtConfig({
     presets: {
       placeholder: {
         modifiers: {
-          quality: 10,
-          width: 720,
-          blur: 5,
+          quality: 80,
+          width: 1920,
+          blur: 50,
         },
       },
       thumbnail: {
@@ -72,6 +72,9 @@ export default defineNuxtConfig({
           quality: 100,
         },
       },
+    },
+    ipx: {
+      maxAge: 60 * 60 * 24 * 365, // 1 Year
     },
   },
 

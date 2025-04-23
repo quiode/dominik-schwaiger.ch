@@ -34,7 +34,8 @@ onBeforeUnmount(() => {
   <div class="gallery" :class="{ slideshow: selectedImage != undefined }">
     <div v-for="column in columns" class="column">
       <div v-for="image in column" class="image-container" @click="onSelectImage(image)">
-        <NuxtImg preset="thumbnail" :placeholder="[500, 500, 10, 20]" class="image" :src="imagePath(image.name)" />
+        <NuxtImg preset="thumbnail" :placeholder="img(imagePath(image.name), {}, { preset: 'placeholder' })"
+          class="image" :src="imagePath(image.name)" />
       </div>
     </div>
   </div>
