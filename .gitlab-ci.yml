@@ -1,6 +1,8 @@
 build:
   image: docker:24.0.5
   stage: build
+  only:
+    - main
   services:
     - docker:24.0.5-dind
   variables:
