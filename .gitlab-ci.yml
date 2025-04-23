@@ -1,6 +1,9 @@
 build:
   image: docker:24.0.5
   stage: build
+  rules:
+    - if: $CI_COMMIT_REF_PROTECTED == "true"
+    - when: manual
   services:
     - docker:24.0.5-dind
   variables:
