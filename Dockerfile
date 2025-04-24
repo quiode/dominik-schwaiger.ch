@@ -39,10 +39,6 @@ ENV SCHWAIGER_ADMIN_PASSWORD=${SCHWAIGER_ADMIN_PASSWORD}
 VOLUME ${DATA_DIR}
 VOLUME ${IMAGES_DIR}
 
-# Install required software (heic support)
-RUN apt update
-RUN apt install libvips -y
-
 WORKDIR /dominik-schwaiger.ch
 COPY --from=0 /dominik-schwaiger.ch/.output/ /dominik-schwaiger.ch/
 
