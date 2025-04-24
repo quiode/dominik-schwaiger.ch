@@ -80,7 +80,7 @@ async function imageExists(hash: string) {
   return json.some((image) => image.hash == hash);
 }
 
-async function getJSON(): Promise<ImageFile[]> {
+export async function getJSON(): Promise<ImageFile[]> {
   return JSON.parse(await readFile(JSON_FILE, "utf8"));
 }
 

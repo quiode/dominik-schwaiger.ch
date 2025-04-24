@@ -6,7 +6,7 @@
     "url": "https://dominik-schwaiger.ch"
   },
   "description": "My personal Website",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "license": "MIT",
   "engines": {
     "node": ">=22.14.0"
@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@nuxtjs/i18n": "^9.5.3",
+    "@nuxtjs/seo": "^3.0.3",
     "@types/serve-static": "^1.15.7",
     "@types/uuid": "^10.0.0",
     "nuxt": "^3.16.2",
