@@ -22,7 +22,6 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "Dominik Schwaiger",
       script: [
         {
           async: true,
