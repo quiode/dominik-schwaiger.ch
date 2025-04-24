@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 const i18n = useI18n();
 
+useHead({
+  title: i18n.t('cv')
+});
+
 const pdfURL = computed(() => "/CV-" + i18n.locale.value + ".pdf");
 const svgURL = computed(() => "/CV-" + i18n.locale.value + ".svg");
 </script>

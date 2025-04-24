@@ -102,6 +102,7 @@ export default defineNuxtConfig({
   seo: {
     // seo utils
     enabled: true,
+    fallbackTitle: false,
   },
 
   schemaOrg: {
@@ -136,8 +137,6 @@ export default defineNuxtConfig({
     enabled: true,
   },
 
-  compatibilityDate: "2024-08-19",
-
   devtools: {
     enabled: true,
   },
@@ -160,4 +159,6 @@ export default defineNuxtConfig({
       database: true,
     },
   },
+
+  compatibilityDate: "2024-08-19",
 });

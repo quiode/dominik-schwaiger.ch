@@ -3,6 +3,11 @@ import { validate } from 'uuid';
 import type { ImageDeleteBody } from '~/server/api/admin/images.delete';
 import type { ImageFile } from '~/server/utils/db';
 
+const { t } = useI18n();
+useHead({
+  title: t('admin')
+});
+
 defineRouteRules({
   robots: false,
 });
