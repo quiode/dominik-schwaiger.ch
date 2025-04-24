@@ -17,7 +17,7 @@ let validId = ref(false);
 watch(deleteId, newId => validId.value = validate(newId));
 
 async function submit() {
-  await Promise.all(files.value.map(image => {
+  await Promise.all(files.value.map(image =>
     $fetch('/api/admin/images', {
       method: 'POST',
       retry: 3,
@@ -33,7 +33,7 @@ async function submit() {
         image: image
       });
     })
-  }))
+  ))
     .then(
       () => alert('Done!'),
       (error: { error: any, image: ImageFile }) => {
