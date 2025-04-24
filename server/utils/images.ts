@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import sharp from "sharp";
-import { writeFile, readFile, access, mkdir, rm } from "fs/promises";
+import { access, mkdir, rm } from "fs/promises";
 import { hash } from "crypto";
 import { join } from "path";
 
@@ -10,44 +10,29 @@ export async function uploadImage(binaryString: Buffer) {
   const hash = hashBuffer(binaryString);
 
   // only upload image if it hasn't been already uploaded
-
   if (!(await imageExists(hash))) {
     const fileName = uuidv4();
     // get metadata
     // convert image
-    const data1 = await sharp(binaryString)
+    const data = await sharp(binaryString)
       .keepMetadata()
       .rotate()
       .webp({ quality: 90 })
       .toFile(getImagePath(fileName));
-    // add file to file index
-    const json = await getJSON();
-    const newJSON: ImageFile[] = [
-      ...json,
-      {
-        name: fileName,
-        width: data1.width,
-        height: data1.height,
-        hash: hash,
-      },
-    ];
-    await writeJSON(newJSON);
+    // save to db
+    await saveImage({
+      name: fileName,
+      width: data.width,
+      height: data.height,
+      hash: hash,
+    });
   }
 }
 
-export async function deleteImage(id: string) {
-  // remove image from json
-  const json = await getJSON();
-  const image = json.find((item) => item.name.startsWith(id));
-
-  // only if image exists remove it
-  if (image) {
-    // remove json
-    const filteredJSON = json.filter((item) => !item.name.startsWith(id));
-    await writeJSON(filteredJSON);
-    // remove image files
-    await rm(getImagePath(image.name));
-  }
+export async function removeImage(id: string) {
+  await deleteImage(id);
+  // remove image files
+  await rm(getImagePath(id));
 }
 
 // Creates the files/folders if they do not already exist
@@ -58,9 +43,7 @@ export async function createFiles() {
   if (!(await access_wrapper(IMAGES_DIR))) {
     await mkdir(IMAGES_DIR, { recursive: true });
   }
-  if (!(await access_wrapper(JSON_FILE))) {
-    writeJSON([] satisfies ImageFile[]);
-  }
+  initDatabase();
 }
 
 function access_wrapper(file: string) {
@@ -75,17 +58,9 @@ function hashBuffer(buffer: Buffer) {
 }
 
 async function imageExists(hash: string) {
-  const json: ImageFile[] = await getJSON();
+  const matches = await getImageByHash(hash);
 
-  return json.some((image) => image.hash == hash);
-}
-
-export async function getJSON(): Promise<ImageFile[]> {
-  return JSON.parse(await readFile(JSON_FILE, "utf8"));
-}
-
-async function writeJSON(data: ImageFile[]) {
-  await writeFile(JSON_FILE, JSON.stringify(data), "utf-8");
+  return matches.length > 0;
 }
 
 function getImagePath(name: string) {

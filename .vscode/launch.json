@@ -5,12 +5,13 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "command": "pnpm run dev",
-      "name": "Run pnpm dev",
+      "command": "nix develop --command npm run dev",
+      "name": "Developement",
       "request": "launch",
       "type": "node-terminal",
       "env": {
-        "DATA_DIR": "${workspaceFolder}/public/images"
+        "DATA_DIR": "${workspaceFolder}/data",
+        "IMAGES_DIR": "${workspaceFolder}/public/images"
       }
     }
   ]

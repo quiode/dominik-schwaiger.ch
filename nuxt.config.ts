@@ -1,4 +1,4 @@
-import { FILE_MOUNT } from "./server/utils/constants";
+import { DATABASE_FILE, FILE_MOUNT } from "./server/utils/constants";
 import { definePerson, defineOrganization } from "nuxt-schema-org/schema";
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
@@ -144,5 +144,20 @@ export default defineNuxtConfig({
 
   experimental: {
     inlineRouteRules: true, // enable inline rules, used for robots.txt (defineRouteRules)
+  },
+
+  nitro: {
+    database: {
+      default: {
+        connector: "sqlite",
+        options: {
+          name: "db",
+          path: DATABASE_FILE,
+        },
+      },
+    },
+    experimental: {
+      database: true,
+    },
   },
 });
