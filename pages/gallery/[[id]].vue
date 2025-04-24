@@ -19,7 +19,7 @@ getImages()
     images.value = data;
 
     // go to '/gallery' if image name is not a valid image
-    if (imageName != '' && !data.includes(imageName)) {
+    if (imageName != '' && !data.includes(imageName) && import.meta.client) {
       navigateTo(localePath('/gallery'));
     }
 
