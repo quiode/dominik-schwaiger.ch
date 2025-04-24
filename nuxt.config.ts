@@ -57,6 +57,17 @@ export default defineNuxtConfig({
     },
   },
 
+  /**
+   * TODO: currently doesn't work because of an open issue (https://github.com/nitrojs/nitro/issues/1894). if fixed provides an alternative to the docker caching.
+  routeRules: {
+    "/_ipx/**": {
+      cache: {
+        maxAge: 60 * 60 * 24 * 365, // 1 Year
+      },
+    },
+  },
+  */
+
   fileStorage: { mount: FILE_MOUNT },
 
   image: {
