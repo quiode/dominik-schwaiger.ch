@@ -6,7 +6,7 @@
     "url": "https://dominik-schwaiger.ch"
   },
   "description": "Personal Website of Dominik Schwaiger",
-  "version": "4.4.0",
+  "version": "4.4.1",
   "license": "MIT",
   "engines": {
     "node": ">=22.14.0"
