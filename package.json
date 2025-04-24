@@ -5,8 +5,8 @@
     "email": "mail@dominik-schwaiger.ch",
     "url": "https://dominik-schwaiger.ch"
   },
-  "description": "My personal Website",
-  "version": "4.3.0",
+  "description": "Personal Website of Dominik Schwaiger",
+  "version": "4.4.0",
   "license": "MIT",
   "engines": {
     "node": ">=22.14.0"

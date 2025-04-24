@@ -1,4 +1,5 @@
 import { FILE_MOUNT } from "./server/utils/constants";
+import { definePerson, defineOrganization } from "nuxt-schema-org/schema";
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
@@ -85,22 +86,51 @@ export default defineNuxtConfig({
   ogImage: {
     enabled: false,
   },
+
   sitemap: {
     enabled: true,
     sources: ["/api/__sitemap__/urls"],
   },
+
   robots: {
     enabled: true,
   },
+
   seo: {
     // seo utils
-    enabled: false,
+    enabled: true,
   },
+
   schemaOrg: {
-    enabled: false,
+    enabled: true,
+    identity: definePerson({
+      name: "Dominik Schwaiger",
+      givenName: "Dominik",
+      familyName: "Schwaiger",
+      image: "/avatar.jpg,",
+      description: "Student at ETHZ",
+      jobTitle: "Student",
+      email: "mail@dominik-schwaiger.ch",
+      url: "https://dominik-schwaiger.ch",
+      sameAs: [
+        "https://github.com/quiode",
+        "https://gitlab.dominik-schwaiger.ch/quio",
+        "https://www.instagram.com/domgraphy/",
+      ],
+      gender: "Male",
+      birthDate: "10.03.2004",
+      nationality: "Switzerland",
+      address: "Buttikon SZ, Switzerland",
+      memberOf: defineOrganization({
+        name: "ETH Zurich",
+        url: "https://ethz.ch",
+      }),
+      knowsLanguage: ["German", "English", "French"],
+    }),
   },
+
   linkChecker: {
-    enabled: false,
+    enabled: true,
   },
 
   compatibilityDate: "2024-08-19",
