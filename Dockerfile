@@ -41,7 +41,7 @@ VOLUME ${IMAGES_DIR}
 
 # Install required software (heic support)
 RUN apt update
-RUN apt install libvips
+RUN apt install libvips -y
 
 WORKDIR /dominik-schwaiger.ch
 COPY --from=0 /dominik-schwaiger.ch/.output/ /dominik-schwaiger.ch/
