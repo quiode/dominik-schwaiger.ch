@@ -1,6 +1,11 @@
 <script lang="ts" setup>
 import pgp_key from '~/public/Dominik Schwaiger.asc?raw';
 
+const { t } = useI18n();
+useHead({
+  title: t('gpg')
+});
+
 async function copyText(text: string) {
   try {
     await navigator.clipboard.writeText(text);

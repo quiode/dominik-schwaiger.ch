@@ -3,6 +3,11 @@ const img = useImage();
 const route = useRoute();
 const localePath = useLocalePath();
 
+const { t } = useI18n();
+useHead({
+  title: t('gallery')
+});
+
 const imageName = route.params.id as string;
 const imageIndex = ref(-1);
 let columns = ref([[], [], []] as [string[], string[], string[]]);
@@ -54,8 +59,8 @@ const close = () => {
   <div class="gallery" :class="{ slideshow: imageName != '' }">
     <div v-for="column in columns" class="column">
       <div v-for="image in column" class="image-container" @click="onSelectImage(image)">
-        <NuxtImg preset="thumbnail" :placeholder="img(imagePath(image), {}, { preset: 'placeholder' })"
-          class="image" :src="imagePath(image)" />
+        <NuxtImg preset="thumbnail" :placeholder="img(imagePath(image), {}, { preset: 'placeholder' })" class="image"
+          :src="imagePath(image)" />
       </div>
     </div>
   </div>

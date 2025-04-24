@@ -1,4 +1,10 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const { t } = useI18n();
+useHead({
+  title: t('404'),
+  titleTemplate: '%s'
+});
+</script>
 
 <template>
   <div id="container">
