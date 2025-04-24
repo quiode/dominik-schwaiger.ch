@@ -24,7 +24,7 @@ export async function saveImage(image: ImageFile) {
 }
 
 export async function deleteImage(name: string) {
-  await db.sql`DELETE FROM images WHERE id=${name};`;
+  await db.sql`DELETE FROM images WHERE name=${name};`;
 }
 
 export async function getImageByHash(hash: string) {
