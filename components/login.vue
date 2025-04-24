@@ -9,7 +9,7 @@ let wrong = ref(false);
 const passwordSent = () => {
   let finalPassword = password.value;
 
-  $fetch('/api/auth', { params: { password: finalPassword } })
+  $fetch('/api/admin/auth', { params: { password: finalPassword } })
     .then(
       () => emits('authenticated', { password: finalPassword }), () => { wrong.value = true; password.value = '' });
 };

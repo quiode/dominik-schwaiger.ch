@@ -7,6 +7,8 @@ export default defineNuxtConfig({
     typeCheck: true,
   },
 
+  site: { url: "https://dominik-schwaiger.ch", name: "Dominik Schwaiger" },
+
   vue: {
     compilerOptions: {
       isCustomElement: (tag) => ["webring-banner"].includes(tag),
@@ -31,7 +33,7 @@ export default defineNuxtConfig({
     "bootstrap-icons/font/bootstrap-icons.scss",
   ],
 
-  modules: ["@nuxtjs/i18n", "nuxt-file-storage", "@nuxt/image"],
+  modules: ["@nuxtjs/i18n", "nuxt-file-storage", "@nuxt/image", "@nuxtjs/seo"],
 
   i18n: {
     locales: [
@@ -78,6 +80,27 @@ export default defineNuxtConfig({
     ipx: {
       maxAge: 60 * 60 * 24 * 365, // 1 Year
     },
+  },
+
+  ogImage: {
+    enabled: false,
+  },
+  sitemap: {
+    enabled: true,
+    sources: ["/api/__sitemap__/urls"],
+  },
+  robots: {
+    enabled: false,
+  },
+  seo: {
+    // seo utils
+    enabled: false,
+  },
+  schemaOrg: {
+    enabled: false,
+  },
+  linkChecker: {
+    enabled: false,
   },
 
   compatibilityDate: "2024-08-19",

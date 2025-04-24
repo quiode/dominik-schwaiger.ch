@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { validate } from 'uuid';
-import type { ImageDeleteBody } from '~/server/api/images.delete';
+import type { ImageDeleteBody } from '~/server/api/admin/images.delete';
 
 const { handleFileInput, files } = useFileStorage()
 
@@ -15,7 +15,7 @@ async function submit() {
   const chunks = chunkArray(files.value, 2);
 
   for (let chunk of chunks) {
-    await $fetch('/api/images', {
+    await $fetch('/api/admin/images', {
       method: 'POST',
       body: {
         files: chunk
@@ -25,7 +25,7 @@ async function submit() {
       }
     })
       .catch(_ => // retry once
-        $fetch('/api/images', {
+        $fetch('/api/admin/images', {
           method: 'POST',
           body: {
             files: chunk
@@ -36,7 +36,7 @@ async function submit() {
         })
       )
       .catch(_ => // retry twice
-        $fetch('/api/images', {
+        $fetch('/api/admin/images', {
           method: 'POST',
           body: {
             files: chunk
@@ -56,7 +56,7 @@ async function submit() {
 }
 
 async function deleteImage(id: string) {
-  await $fetch('/api/images', {
+  await $fetch('/api/admin/images', {
     method: 'DELETE',
     body: {
       id: id
