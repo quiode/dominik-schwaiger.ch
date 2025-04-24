@@ -2,6 +2,10 @@
 import { validate } from 'uuid';
 import type { ImageDeleteBody } from '~/server/api/admin/images.delete';
 
+defineRouteRules({
+  robots: false,
+});
+
 const { handleFileInput, files } = useFileStorage()
 
 let password = ref('');

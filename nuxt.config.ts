@@ -1,4 +1,4 @@
-import { DATA_DIR, FILE_MOUNT } from "./server/utils/constants";
+import { FILE_MOUNT } from "./server/utils/constants";
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
@@ -90,7 +90,7 @@ export default defineNuxtConfig({
     sources: ["/api/__sitemap__/urls"],
   },
   robots: {
-    enabled: false,
+    enabled: true,
   },
   seo: {
     // seo utils
@@ -107,5 +107,9 @@ export default defineNuxtConfig({
 
   devtools: {
     enabled: true,
+  },
+
+  experimental: {
+    inlineRouteRules: true, // enable inline rules, used for robots.txt (defineRouteRules)
   },
 });
