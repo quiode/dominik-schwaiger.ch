@@ -8,3 +8,17 @@ export function imagePath(name: string) {
 export function imageJsonPath() {
   return `/api/images`;
 }
+
+let images = undefined as string[] | undefined;
+
+export async function getImages() {
+  if (images) {
+    return images;
+  } else {
+    return $fetch<ImageFile[]>(imageJsonPath())
+      .then((data) => data.map((image) => image.name))
+      .then((data) => data.sort())
+      .then((data) => data.reverse())
+      .then((data) => (images = data));
+  }
+}
