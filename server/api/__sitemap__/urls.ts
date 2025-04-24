@@ -1,5 +1,8 @@
+import { getImages } from "../../utils/db";
+
+// custom urls for the sitemap
 export default defineSitemapEventHandler(async () => {
-  const images = (await getJSON()).map((image) => image.name);
+  const images = (await getImages()).map((image) => image.name);
 
   return [
     {

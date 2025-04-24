@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { validate } from 'uuid';
 import type { ImageDeleteBody } from '~/server/api/admin/images.delete';
+import type { ImageFile } from '~/server/utils/db';
 
 defineRouteRules({
   robots: false,
@@ -16,47 +17,30 @@ let validId = ref(false);
 watch(deleteId, newId => validId.value = validate(newId));
 
 async function submit() {
-  const chunks = chunkArray(files.value, 2);
-
-  for (let chunk of chunks) {
-    await $fetch('/api/admin/images', {
+  await Promise.all(files.value.map(image => {
+    $fetch('/api/admin/images', {
       method: 'POST',
+      retry: 3,
       body: {
-        files: chunk
+        files: [image]
       },
       params: {
         password: password.value
       }
-    })
-      .catch(_ => // retry once
-        $fetch('/api/admin/images', {
-          method: 'POST',
-          body: {
-            files: chunk
-          },
-          params: {
-            password: password.value
-          }
-        })
-      )
-      .catch(_ => // retry twice
-        $fetch('/api/admin/images', {
-          method: 'POST',
-          body: {
-            files: chunk
-          },
-          params: {
-            password: password.value
-          }
-        })
-      )
-      .catch((error) => {
-        alert(error);
-        console.log(chunk)
+    }).catch(error => {
+      return Promise.reject({
+        error: error,
+        image: image
       });
-  }
-
-  alert('done!');
+    })
+  }))
+    .then(
+      () => alert('Done!'),
+      (error: { error: any, image: ImageFile }) => {
+        alert("An error has occured! (see logs)");
+        console.error("Error while trying to save an image: ", error);
+      }
+    );
 }
 
 async function deleteImage(id: string) {
@@ -68,9 +52,13 @@ async function deleteImage(id: string) {
     params: {
       password: password.value
     }
-  }).catch((error) => { alert(error); });
-
-  alert('done');
+  }).then(
+    () => alert('Done!'),
+    (error) => {
+      alert("An error has occured! (see logs)");
+      console.error("Error while trying to delete an image: ", error);
+    }
+  );
 }
 </script>
 
@@ -80,13 +68,13 @@ async function deleteImage(id: string) {
     <div class="container">
       <div class="inner-container">
         <input type="file" multiple @input="handleFileInput" />
-        <button :disabled="files.length == 0" @click="submit">submit</button>
+        <button :disabled="files.length == 0" @click="submit">{{ $t('submit') }}</button>
       </div>
     </div>
     <div class="container">
       <div class="inner-container">
         <input placeholder="id-to-delete" class="text-input" v-model="deleteId" type="text" />
-        <button @click="deleteImage(deleteId)" :disabled="!validId">submit</button>
+        <button @click="deleteImage(deleteId)" :disabled="!validId">{{ $t('submit') }}</button>
       </div>
     </div>
   </div>
