@@ -8,7 +8,11 @@ export default defineNuxtConfig({
     typeCheck: true,
   },
 
-  site: { url: "https://dominik-schwaiger.ch", name: "Dominik Schwaiger" },
+  site: {
+    url: "https://dominik-schwaiger.ch",
+    name: "Dominik Schwaiger",
+    description: "The Personal Website of Dominik Schwaiger",
+  },
 
   vue: {
     compilerOptions: {
