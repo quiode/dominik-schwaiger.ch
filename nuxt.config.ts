@@ -59,6 +59,7 @@ export default defineNuxtConfig({
 
   /**
    * TODO: currently doesn't work because of an open issue (https://github.com/nitrojs/nitro/issues/1894). if fixed provides an alternative to the docker caching.
+   * see https://nitro.build/guide/cache
   routeRules: {
     "/_ipx/**": {
       cache: {
