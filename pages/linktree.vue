@@ -19,6 +19,10 @@ const links: {
       text: 'Email',
       url: 'mailto:mail@dominik-schwaiger.ch',
     },
+    {
+      text: 'Instagram',
+      url: 'https://www.instagram.com/domgraphy'
+    }
   ];
 </script>
 
@@ -30,7 +34,7 @@ const links: {
         {{ link.text }}
       </a>
     </div>
-  </div>
+    </div>
 </template>
 
 <style lang="scss" scoped>
@@ -44,6 +48,12 @@ const links: {
 
   @media screen and (max-width: 768px) {
     width: 90%;
+  }
+
+  @media screen and (orientation: horizontal) {
+    :first-child {
+      margin-top: 4% !important;
+    }
   }
 }
 
