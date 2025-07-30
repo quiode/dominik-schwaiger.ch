@@ -1,32 +1,42 @@
 <script lang="ts" setup>
 const { t } = useI18n();
 useHead({
-  title: t('linktree')
+  title: t("linktree"),
 });
 const links: {
   text: string;
   url: string;
 }[] = [
-    {
-      text: 'GitHub',
-      url: 'https://github.com/quiode',
-    },
-    {
-      text: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/dominik-schwaiger-1a7a20226/',
-    },
-    {
-      text: 'Email',
-      url: 'mailto:mail@dominik-schwaiger.ch',
-    },
-  ];
+  {
+    text: "GitHub",
+    url: "https://github.com/quiode",
+  },
+  {
+    text: "LinkedIn",
+    url: "https://www.linkedin.com/in/dominik-schwaiger-1a7a20226/",
+  },
+  {
+    text: "Email",
+    url: "mailto:mail@dominik-schwaiger.ch",
+  },
+  {
+    text: "Instagram",
+    url: "https://www.instagram.com/domgraphy",
+  },
+];
 </script>
 
 <template>
-  <div>
-    <div id="container">
-      <a class="link" :class="{ 'link-2': index % 2 == 0 }" v-for="(link, index) in links" :key="index" :href="link.url"
-        target="_blank">
+  <div id="outer-container">
+    <div id="inner-container">
+      <a
+        class="link"
+        :class="{ 'link-2': index % 2 == 0 }"
+        v-for="(link, index) in links"
+        :key="index"
+        :href="link.url"
+        target="_blank"
+      >
         {{ link.text }}
       </a>
     </div>
@@ -34,21 +44,29 @@ const links: {
 </template>
 
 <style lang="scss" scoped>
-@use '../assets/colors.scss';
+@use "../assets/colors.scss";
 
-#container {
-  width: 65%;
-  transform: translateX(-50%);
-  position: relative;
-  left: 50%;
+#outer-container {
+  display: flex;
+  justify-content: center;
+}
 
-  @media screen and (max-width: 768px) {
-    width: 90%;
+#inner-container {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: stretch;
+  align-content: stretch;
+  gap: 5em;
+
+  @media screen and (max-width: 786px) {
+    width: 100%;
   }
 }
 
 .link {
-  margin-top: 7%;
   padding: 5% 0;
   border: 1px;
   border-style: solid;
@@ -61,13 +79,16 @@ const links: {
   font-size: 2em;
 
   /* hover */
-  background: linear-gradient(to left, colors.$background-color 50%, colors.$secondary-color 50%);
+  background: linear-gradient(
+    to left,
+    colors.$background-color 50%,
+    colors.$secondary-color 50%
+  );
   background-size: 200% 100%;
   background-position: right bottom;
   transition: background-position 0.5s ease;
 
   @media screen and (max-width: 768px) {
-    margin-top: 35%;
     font-size: 1em !important;
   }
 
@@ -82,9 +103,11 @@ const links: {
 
 .link-2 {
   background-position: left bottom !important;
-  background-image: linear-gradient(to right,
-      colors.$background-color 50%,
-      colors.$secondary-color 50%) !important;
+  background-image: linear-gradient(
+    to right,
+    colors.$background-color 50%,
+    colors.$secondary-color 50%
+  ) !important;
 
   &:hover {
     background-position: right bottom !important;
