@@ -15,6 +15,7 @@
           packages = [
             nodejs_22
             sqlitebrowser
+            docker
           ];
 
           # Environment Variables
