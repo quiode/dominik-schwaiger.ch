@@ -10,7 +10,29 @@
     pkgsFor = inputs.nixpkgs.legacyPackages;
   in {
     devShells = eachSystem (system: {
-      default = pkgsFor.${system}.callPackage ./shell.nix {};
+      default = with pkgsFor.${system};
+        mkShellNoCC {
+          packages = [
+            nodejs_22
+            sqlitebrowser
+            docker
+
+            # shell alias as package
+            (writeShellScriptBin
+              "push"
+              ''
+                git switch main && git merge dev --no-ff --no-edit && git push && git switch dev && git push
+              '')
+          ];
+
+          # Environment Variables
+          DATA_DIR = "data";
+          IMAGES_DIR = "public/images";
+
+          shellHook = ''
+            npm install
+          '';
+        };
     });
   };
 }
